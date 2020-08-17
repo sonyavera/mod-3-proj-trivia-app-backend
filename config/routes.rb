@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'quizzes/new', to: 'quizzes#new'
+
   resources :quiz_results
   resources :quizzes
   resources :users

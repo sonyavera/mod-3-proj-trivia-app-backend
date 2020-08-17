@@ -5,15 +5,9 @@ require 'json'
 class QuizzesController < ApplicationController
     
     def new
-        # response = HTTParty.get("https://opentdb.com/api_category.php")
-        # category_list = JSON.parse(response.body)
-        # render body: category_list
-        prints "test"
-        testHash = {test: "test"}
-        render json: testHash
-        # render json: "{\"test\": \"test\"}"
-        # render plain: "test"
-        # render json: HTTParty.get("https://opentdb.com/api_category.php")
+        response = HTTParty.get("https://opentdb.com/api_category.php")
+        category_list = JSON.parse(response.body)
+        render json: category_list
     end
 
     def create 
@@ -29,12 +23,12 @@ class QuizzesController < ApplicationController
         render json: questions_json
     end
     
-    def show
-    #quiz is rendered here
+    # def show
+    # #quiz is rendered here
      
 
-    #render json: @quiz
-    end
+    # #render json: @quiz
+    # end
 
     private
 
