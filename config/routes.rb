@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  get 'quizzes/new', to: 'quizzes#new'
+  get 'quizzes/new', to: 'quizzes#new', as: 'new_quiz'
   post 'quizzes/find', to: 'quizzes#find'
+  post 'users/create', to: 'users#create'
 
   resources :quiz_results
   resources :quizzes
