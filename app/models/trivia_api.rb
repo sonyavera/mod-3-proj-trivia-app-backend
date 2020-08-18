@@ -4,18 +4,6 @@ require 'json'
 
 class TriviaApi
 
-#     def self.generate_quiz(category, difficulty)
-#         category_id = get_category_id(category)
-#         response = HTTParty.get("https://opentdb.com/api.php?amount=10&category=#{category_id}&difficulty=#{difficulty}&type=multiple")
-#         questions_json = JSON.parse(response.body)["results"]
-#         # questions_json.map do |question|
-#         #     question = {question, correct_answer, incorrect_answers}
-#         # end
-#         # we should be using destructuring here
-#         # get quiz data, render quiz data
-#         # decide when to move over to javascript
-#     end
-
     # def self.create_categories
     #     response = HTTParty.get("https://opentdb.com/api_category.php")
     #     category_list = JSON.parse(response.body)
@@ -35,12 +23,12 @@ class TriviaApi
         print category_id
     end
 
-    def self.new
-        response = HTTParty.get("https://opentdb.com/api_category.php")
-        category_list = JSON.parse(response.body)
-        puts category_list
-        render body: category_list
-    end
+    # def self.new
+    #     response = HTTParty.get("https://opentdb.com/api_category.php")
+    #     category_list = JSON.parse(response.body)
+    #     puts category_list
+    #     render body: category_list
+    # end
 
 end
 
