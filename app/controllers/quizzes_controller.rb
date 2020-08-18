@@ -13,7 +13,9 @@ class QuizzesController < ApplicationController
     def find 
         quiz = Quiz.create(quiz_params)
         quiz.category_id = Quiz.get_category_id(quiz.category)
-        response = HTTParty.get("https://opentdb.com/api.php?amount=10&category=#{quiz.category_id}&difficulty=#{quiz.difficulty}&type=multiple")        
+        cat_id = quiz.category_id.to_s
+        dif = quiz.difficulty
+        response = HTTParty.get("https://opentdb.com/api.php?amount=10&category=#{cat_id}&difficulty=#{dif}&type=multiple")        
         questions_json = JSON.parse(response.body)["results"]   
         render json: questions_json
         #we need to write a custom setter that updates the quiz-result joiner table as well

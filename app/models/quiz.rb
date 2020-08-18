@@ -1,7 +1,8 @@
 require 'httparty'
 require 'json'
+require 'active_record'
 
-class Quiz < ApplicationRecord
+class Quiz < ActiveRecord::Base
      has_many :quiz_results
      has_many :users, through: :quiz_results
 
@@ -24,16 +25,14 @@ class Quiz < ApplicationRecord
         response = HTTParty.get("https://opentdb.com/api_category.php")
         category_json = JSON.parse(response.body)
         category = category_json["trivia_categories"].find do |cat|
-                        cat["name"] == "#{category_name}"
-                   end 
+            cat["name"] == "#{category_name}"
+        end 
         category_id = category["id"]
-        print category_id
+        return category_id
     end
-
-    
 end
 
-Quiz.get_category_id("Mythology")
+
 
 
 
