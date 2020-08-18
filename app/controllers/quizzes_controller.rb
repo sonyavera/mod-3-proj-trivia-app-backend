@@ -11,7 +11,7 @@ class QuizzesController < ApplicationController
     end
 
     def find 
-        quiz = Quiz.create(quiz_params)
+        # quiz = Quiz.create(quiz_params)
         quiz.category_id = Quiz.get_category_id(quiz.category)
         cat_id = quiz.category_id.to_s
         dif = quiz.difficulty
