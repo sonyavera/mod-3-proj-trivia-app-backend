@@ -3498,3 +3498,477 @@ Processing by QuizzesController#find as JSON
 Completed 200 OK in 2795ms (Views: 0.9ms | ActiveRecord: 7.2ms | Allocations: 8846)
 
 
+Started POST "/quizzes/find" for ::1 at 2020-08-18 21:30:46 -0400
+Processing by QuizzesController#find as JSON
+  Parameters: {"category"=>"Geography", "difficulty"=>"easy", "quiz"=>{"category"=>"Geography", "difficulty"=>"easy"}}
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:14:in `find'
+  [1m[36mQuiz Create (0.7ms)[0m  [1m[32mINSERT INTO "quizzes" ("category", "difficulty", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["category", "Geography"], ["difficulty", "easy"], ["created_at", "2020-08-19 01:30:46.276265"], ["updated_at", "2020-08-19 01:30:46.276265"]]
+  ↳ app/controllers/quizzes_controller.rb:14:in `find'
+  [1m[35m (2.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:14:in `find'
+Completed 200 OK in 1961ms (Views: 1.1ms | ActiveRecord: 3.9ms | Allocations: 8866)
+
+
+Started POST "/quizzes/find" for ::1 at 2020-08-18 21:31:18 -0400
+Processing by QuizzesController#find as JSON
+  Parameters: {"category"=>"Geography", "difficulty"=>"easy", "quiz"=>{"category"=>"Geography", "difficulty"=>"easy"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:14:in `find'
+  [1m[36mQuiz Create (0.8ms)[0m  [1m[32mINSERT INTO "quizzes" ("category", "difficulty", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["category", "Geography"], ["difficulty", "easy"], ["created_at", "2020-08-19 01:31:18.579854"], ["updated_at", "2020-08-19 01:31:18.579854"]]
+  ↳ app/controllers/quizzes_controller.rb:14:in `find'
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:14:in `find'
+Completed 200 OK in 1266ms (Views: 1.0ms | ActiveRecord: 2.0ms | Allocations: 8850)
+
+
+Started POST "/quizzes/find" for ::1 at 2020-08-18 21:31:48 -0400
+Processing by QuizzesController#find as JSON
+  Parameters: {"category"=>"Geography", "difficulty"=>"easy", "quiz"=>{"category"=>"Geography", "difficulty"=>"easy"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:14:in `find'
+  [1m[36mQuiz Create (0.4ms)[0m  [1m[32mINSERT INTO "quizzes" ("category", "difficulty", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["category", "Geography"], ["difficulty", "easy"], ["created_at", "2020-08-19 01:31:48.641003"], ["updated_at", "2020-08-19 01:31:48.641003"]]
+  ↳ app/controllers/quizzes_controller.rb:14:in `find'
+  [1m[35m (2.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:14:in `find'
+Completed 200 OK in 419ms (Views: 0.9ms | ActiveRecord: 3.0ms | Allocations: 8848)
+
+
+Started POST "/quizzes/find" for ::1 at 2020-08-18 21:31:56 -0400
+Processing by QuizzesController#find as JSON
+  Parameters: {"category"=>"Geography", "difficulty"=>"easy", "quiz"=>{"category"=>"Geography", "difficulty"=>"easy"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:14:in `find'
+  [1m[36mQuiz Create (0.7ms)[0m  [1m[32mINSERT INTO "quizzes" ("category", "difficulty", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["category", "Geography"], ["difficulty", "easy"], ["created_at", "2020-08-19 01:31:56.581539"], ["updated_at", "2020-08-19 01:31:56.581539"]]
+  ↳ app/controllers/quizzes_controller.rb:14:in `find'
+  [1m[35m (2.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:14:in `find'
+Completed 200 OK in 520ms (Views: 1.0ms | ActiveRecord: 3.1ms | Allocations: 8871)
+
+
+Started POST "/quizzes/find" for ::1 at 2020-08-18 21:32:09 -0400
+Processing by QuizzesController#find as JSON
+  Parameters: {"category"=>"Geography", "difficulty"=>"easy", "quiz"=>{"category"=>"Geography", "difficulty"=>"easy"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:14:in `find'
+  [1m[36mQuiz Create (0.6ms)[0m  [1m[32mINSERT INTO "quizzes" ("category", "difficulty", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["category", "Geography"], ["difficulty", "easy"], ["created_at", "2020-08-19 01:32:09.921790"], ["updated_at", "2020-08-19 01:32:09.921790"]]
+  ↳ app/controllers/quizzes_controller.rb:14:in `find'
+  [1m[35m (2.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:14:in `find'
+Completed 200 OK in 631ms (Views: 0.7ms | ActiveRecord: 3.2ms | Allocations: 8869)
+
+
+Started POST "/quizzes/find" for ::1 at 2020-08-18 21:37:47 -0400
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by QuizzesController#find as JSON
+  Parameters: {"category"=>"Entertainment: Japanese Anime & Manga", "difficulty"=>"easy", "quiz"=>{"category"=>"Entertainment: Japanese Anime & Manga", "difficulty"=>"easy"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:14:in `find'
+  [1m[36mQuiz Create (0.7ms)[0m  [1m[32mINSERT INTO "quizzes" ("category", "difficulty", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["category", "Entertainment: Japanese Anime & Manga"], ["difficulty", "easy"], ["created_at", "2020-08-19 01:37:47.965212"], ["updated_at", "2020-08-19 01:37:47.965212"]]
+  ↳ app/controllers/quizzes_controller.rb:14:in `find'
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:14:in `find'
+Completed 200 OK in 254ms (Views: 1.2ms | ActiveRecord: 1.7ms | Allocations: 8978)
+
+
+Started POST "/quizzes/find" for ::1 at 2020-08-18 21:38:51 -0400
+Processing by QuizzesController#find as JSON
+  Parameters: {"category"=>"Entertainment: Japanese Anime & Manga", "difficulty"=>"easy", "quiz"=>{"category"=>"Entertainment: Japanese Anime & Manga", "difficulty"=>"easy"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:14:in `find'
+  [1m[36mQuiz Create (0.6ms)[0m  [1m[32mINSERT INTO "quizzes" ("category", "difficulty", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["category", "Entertainment: Japanese Anime & Manga"], ["difficulty", "easy"], ["created_at", "2020-08-19 01:38:51.439370"], ["updated_at", "2020-08-19 01:38:51.439370"]]
+  ↳ app/controllers/quizzes_controller.rb:14:in `find'
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:14:in `find'
+Completed 200 OK in 370ms (Views: 0.9ms | ActiveRecord: 1.7ms | Allocations: 8960)
+
+
+Started POST "/quizzes/find" for ::1 at 2020-08-18 21:43:15 -0400
+Processing by QuizzesController#find as JSON
+  Parameters: {"category"=>"Entertainment: Japanese Anime & Manga", "difficulty"=>"easy", "quiz"=>{"category"=>"Entertainment: Japanese Anime & Manga", "difficulty"=>"easy"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:14:in `find'
+  [1m[36mQuiz Create (0.7ms)[0m  [1m[32mINSERT INTO "quizzes" ("category", "difficulty", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["category", "Entertainment: Japanese Anime & Manga"], ["difficulty", "easy"], ["created_at", "2020-08-19 01:43:15.164144"], ["updated_at", "2020-08-19 01:43:15.164144"]]
+  ↳ app/controllers/quizzes_controller.rb:14:in `find'
+  [1m[35m (2.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:14:in `find'
+Completed 200 OK in 1900ms (Views: 1.1ms | ActiveRecord: 2.8ms | Allocations: 8998)
+
+
+Started POST "/quizzes/find" for ::1 at 2020-08-18 21:46:15 -0400
+Processing by QuizzesController#find as JSON
+  Parameters: {"category"=>"Entertainment: Japanese Anime & Manga", "difficulty"=>"easy", "quiz"=>{"category"=>"Entertainment: Japanese Anime & Manga", "difficulty"=>"easy"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:14:in `find'
+  [1m[36mQuiz Create (0.5ms)[0m  [1m[32mINSERT INTO "quizzes" ("category", "difficulty", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["category", "Entertainment: Japanese Anime & Manga"], ["difficulty", "easy"], ["created_at", "2020-08-19 01:46:15.234110"], ["updated_at", "2020-08-19 01:46:15.234110"]]
+  ↳ app/controllers/quizzes_controller.rb:14:in `find'
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:14:in `find'
+Completed 200 OK in 231ms (Views: 0.8ms | ActiveRecord: 1.4ms | Allocations: 8745)
+
+
+Started POST "/quizzes/find" for ::1 at 2020-08-18 21:46:40 -0400
+Processing by QuizzesController#find as JSON
+  Parameters: {"category"=>"Entertainment: Japanese Anime & Manga", "difficulty"=>"easy", "quiz"=>{"category"=>"Entertainment: Japanese Anime & Manga", "difficulty"=>"easy"}}
+  [1m[35m (0.4ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:14:in `find'
+  [1m[36mQuiz Create (0.8ms)[0m  [1m[32mINSERT INTO "quizzes" ("category", "difficulty", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["category", "Entertainment: Japanese Anime & Manga"], ["difficulty", "easy"], ["created_at", "2020-08-19 01:46:40.265631"], ["updated_at", "2020-08-19 01:46:40.265631"]]
+  ↳ app/controllers/quizzes_controller.rb:14:in `find'
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:14:in `find'
+Completed 200 OK in 223ms (Views: 0.9ms | ActiveRecord: 1.9ms | Allocations: 8744)
+
+
+Started POST "/quizzes/find" for ::1 at 2020-08-18 21:46:48 -0400
+Processing by QuizzesController#find as JSON
+  Parameters: {"category"=>"Entertainment: Japanese Anime & Manga", "difficulty"=>"easy", "quiz"=>{"category"=>"Entertainment: Japanese Anime & Manga", "difficulty"=>"easy"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:14:in `find'
+  [1m[36mQuiz Create (0.6ms)[0m  [1m[32mINSERT INTO "quizzes" ("category", "difficulty", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["category", "Entertainment: Japanese Anime & Manga"], ["difficulty", "easy"], ["created_at", "2020-08-19 01:46:48.227439"], ["updated_at", "2020-08-19 01:46:48.227439"]]
+  ↳ app/controllers/quizzes_controller.rb:14:in `find'
+  [1m[35m (2.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:14:in `find'
+Completed 200 OK in 1364ms (Views: 0.8ms | ActiveRecord: 3.0ms | Allocations: 8962)
+
+
+Started POST "/quizzes/find" for ::1 at 2020-08-18 21:48:37 -0400
+Processing by QuizzesController#find as JSON
+  Parameters: {"category"=>"Entertainment: Japanese Anime & Manga", "difficulty"=>"easy", "quiz"=>{"category"=>"Entertainment: Japanese Anime & Manga", "difficulty"=>"easy"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:14:in `find'
+  [1m[36mQuiz Create (0.6ms)[0m  [1m[32mINSERT INTO "quizzes" ("category", "difficulty", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["category", "Entertainment: Japanese Anime & Manga"], ["difficulty", "easy"], ["created_at", "2020-08-19 01:48:37.240003"], ["updated_at", "2020-08-19 01:48:37.240003"]]
+  ↳ app/controllers/quizzes_controller.rb:14:in `find'
+  [1m[35m (2.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:14:in `find'
+Completed 200 OK in 246ms (Views: 1.0ms | ActiveRecord: 2.7ms | Allocations: 8969)
+
+
+Started POST "/quizzes/find" for ::1 at 2020-08-18 21:51:19 -0400
+Processing by QuizzesController#find as JSON
+  Parameters: {"category"=>"Entertainment: Japanese Anime & Manga", "difficulty"=>"easy", "quiz"=>{"category"=>"Entertainment: Japanese Anime & Manga", "difficulty"=>"easy"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:14:in `find'
+  [1m[36mQuiz Create (1.5ms)[0m  [1m[32mINSERT INTO "quizzes" ("category", "difficulty", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["category", "Entertainment: Japanese Anime & Manga"], ["difficulty", "easy"], ["created_at", "2020-08-19 01:51:19.368838"], ["updated_at", "2020-08-19 01:51:19.368838"]]
+  ↳ app/controllers/quizzes_controller.rb:14:in `find'
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:14:in `find'
+Completed 200 OK in 282ms (Views: 1.0ms | ActiveRecord: 2.7ms | Allocations: 8951)
+
+
+Started POST "/quizzes/find" for ::1 at 2020-08-18 21:51:35 -0400
+Processing by QuizzesController#find as JSON
+  Parameters: {"category"=>"Entertainment: Japanese Anime & Manga", "difficulty"=>"easy", "quiz"=>{"category"=>"Entertainment: Japanese Anime & Manga", "difficulty"=>"easy"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:14:in `find'
+  [1m[36mQuiz Create (0.6ms)[0m  [1m[32mINSERT INTO "quizzes" ("category", "difficulty", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["category", "Entertainment: Japanese Anime & Manga"], ["difficulty", "easy"], ["created_at", "2020-08-19 01:51:35.569832"], ["updated_at", "2020-08-19 01:51:35.569832"]]
+  ↳ app/controllers/quizzes_controller.rb:14:in `find'
+  [1m[35m (2.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:14:in `find'
+Completed 200 OK in 1296ms (Views: 1.2ms | ActiveRecord: 3.5ms | Allocations: 8977)
+
+
+Started POST "/quizzes/find" for ::1 at 2020-08-18 21:57:01 -0400
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by QuizzesController#find as JSON
+  Parameters: {"category"=>"Entertainment: Japanese Anime & Manga", "difficulty"=>"easy", "quiz"=>{"category"=>"Entertainment: Japanese Anime & Manga", "difficulty"=>"easy"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:14:in `find'
+  [1m[36mQuiz Create (0.7ms)[0m  [1m[32mINSERT INTO "quizzes" ("category", "difficulty", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["category", "Entertainment: Japanese Anime & Manga"], ["difficulty", "easy"], ["created_at", "2020-08-19 01:57:01.455441"], ["updated_at", "2020-08-19 01:57:01.455441"]]
+  ↳ app/controllers/quizzes_controller.rb:14:in `find'
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:14:in `find'
+Completed 200 OK in 2138ms (Views: 0.9ms | ActiveRecord: 1.7ms | Allocations: 8956)
+
+
+Started POST "/quizzes/find" for ::1 at 2020-08-18 21:57:10 -0400
+Processing by QuizzesController#find as JSON
+  Parameters: {"category"=>"Entertainment: Japanese Anime & Manga", "difficulty"=>"easy", "quiz"=>{"category"=>"Entertainment: Japanese Anime & Manga", "difficulty"=>"easy"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:14:in `find'
+  [1m[36mQuiz Create (0.4ms)[0m  [1m[32mINSERT INTO "quizzes" ("category", "difficulty", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["category", "Entertainment: Japanese Anime & Manga"], ["difficulty", "easy"], ["created_at", "2020-08-19 01:57:10.396098"], ["updated_at", "2020-08-19 01:57:10.396098"]]
+  ↳ app/controllers/quizzes_controller.rb:14:in `find'
+  [1m[35m (2.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:14:in `find'
+Completed 200 OK in 2160ms (Views: 0.8ms | ActiveRecord: 2.8ms | Allocations: 8958)
+
+
+Started POST "/quizzes/find" for ::1 at 2020-08-18 21:57:53 -0400
+Processing by QuizzesController#find as JSON
+  Parameters: {"category"=>"Entertainment: Japanese Anime & Manga", "difficulty"=>"easy", "quiz"=>{"category"=>"Entertainment: Japanese Anime & Manga", "difficulty"=>"easy"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:14:in `find'
+  [1m[36mQuiz Create (0.5ms)[0m  [1m[32mINSERT INTO "quizzes" ("category", "difficulty", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["category", "Entertainment: Japanese Anime & Manga"], ["difficulty", "easy"], ["created_at", "2020-08-19 01:57:53.836134"], ["updated_at", "2020-08-19 01:57:53.836134"]]
+  ↳ app/controllers/quizzes_controller.rb:14:in `find'
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:14:in `find'
+Completed 200 OK in 268ms (Views: 0.7ms | ActiveRecord: 1.7ms | Allocations: 8749)
+
+
+Started POST "/quizzes/find" for ::1 at 2020-08-18 21:58:41 -0400
+Processing by QuizzesController#find as JSON
+  Parameters: {"category"=>"Entertainment: Japanese Anime & Manga", "difficulty"=>"easy", "quiz"=>{"category"=>"Entertainment: Japanese Anime & Manga", "difficulty"=>"easy"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:14:in `find'
+  [1m[36mQuiz Create (0.8ms)[0m  [1m[32mINSERT INTO "quizzes" ("category", "difficulty", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["category", "Entertainment: Japanese Anime & Manga"], ["difficulty", "easy"], ["created_at", "2020-08-19 01:58:41.334111"], ["updated_at", "2020-08-19 01:58:41.334111"]]
+  ↳ app/controllers/quizzes_controller.rb:14:in `find'
+  [1m[35m (2.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:14:in `find'
+Completed 200 OK in 774ms (Views: 0.8ms | ActiveRecord: 3.4ms | Allocations: 8958)
+
+
+Started POST "/quizzes/find" for ::1 at 2020-08-18 21:59:20 -0400
+Processing by QuizzesController#find as JSON
+  Parameters: {"category"=>"Entertainment: Japanese Anime & Manga", "difficulty"=>"easy", "quiz"=>{"category"=>"Entertainment: Japanese Anime & Manga", "difficulty"=>"easy"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:14:in `find'
+  [1m[36mQuiz Create (0.6ms)[0m  [1m[32mINSERT INTO "quizzes" ("category", "difficulty", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["category", "Entertainment: Japanese Anime & Manga"], ["difficulty", "easy"], ["created_at", "2020-08-19 01:59:20.457869"], ["updated_at", "2020-08-19 01:59:20.457869"]]
+  ↳ app/controllers/quizzes_controller.rb:14:in `find'
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:14:in `find'
+Completed 200 OK in 361ms (Views: 1.0ms | ActiveRecord: 1.3ms | Allocations: 8957)
+
+
+Started POST "/quizzes/find" for ::1 at 2020-08-18 22:05:52 -0400
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by QuizzesController#find as JSON
+  Parameters: {"category"=>"Entertainment: Japanese Anime & Manga", "difficulty"=>"easy", "quiz"=>{"category"=>"Entertainment: Japanese Anime & Manga", "difficulty"=>"easy"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:14:in `find'
+  [1m[36mQuiz Create (0.9ms)[0m  [1m[32mINSERT INTO "quizzes" ("category", "difficulty", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["category", "Entertainment: Japanese Anime & Manga"], ["difficulty", "easy"], ["created_at", "2020-08-19 02:05:52.775765"], ["updated_at", "2020-08-19 02:05:52.775765"]]
+  ↳ app/controllers/quizzes_controller.rb:14:in `find'
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:14:in `find'
+Completed 200 OK in 1027ms (Views: 2.6ms | ActiveRecord: 1.8ms | Allocations: 8939)
+
+
+Started POST "/quizzes/find" for ::1 at 2020-08-18 22:08:34 -0400
+Processing by QuizzesController#find as JSON
+  Parameters: {"category"=>"Entertainment: Japanese Anime & Manga", "difficulty"=>"easy", "quiz"=>{"category"=>"Entertainment: Japanese Anime & Manga", "difficulty"=>"easy"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:14:in `find'
+  [1m[36mQuiz Create (0.4ms)[0m  [1m[32mINSERT INTO "quizzes" ("category", "difficulty", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["category", "Entertainment: Japanese Anime & Manga"], ["difficulty", "easy"], ["created_at", "2020-08-19 02:08:34.156675"], ["updated_at", "2020-08-19 02:08:34.156675"]]
+  ↳ app/controllers/quizzes_controller.rb:14:in `find'
+  [1m[35m (1.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:14:in `find'
+Completed 200 OK in 245ms (Views: 0.9ms | ActiveRecord: 1.9ms | Allocations: 8781)
+
+
+Started POST "/quizzes/find" for ::1 at 2020-08-18 22:10:11 -0400
+Processing by QuizzesController#find as JSON
+  Parameters: {"category"=>"Entertainment: Japanese Anime & Manga", "difficulty"=>"easy", "quiz"=>{"category"=>"Entertainment: Japanese Anime & Manga", "difficulty"=>"easy"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:14:in `find'
+  [1m[36mQuiz Create (0.6ms)[0m  [1m[32mINSERT INTO "quizzes" ("category", "difficulty", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["category", "Entertainment: Japanese Anime & Manga"], ["difficulty", "easy"], ["created_at", "2020-08-19 02:10:11.583614"], ["updated_at", "2020-08-19 02:10:11.583614"]]
+  ↳ app/controllers/quizzes_controller.rb:14:in `find'
+  [1m[35m (1.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:14:in `find'
+Completed 200 OK in 1085ms (Views: 1.0ms | ActiveRecord: 2.3ms | Allocations: 8954)
+
+
+Started POST "/quizzes/find" for ::1 at 2020-08-18 22:10:44 -0400
+Processing by QuizzesController#find as JSON
+  Parameters: {"category"=>"Entertainment: Japanese Anime & Manga", "difficulty"=>"easy", "quiz"=>{"category"=>"Entertainment: Japanese Anime & Manga", "difficulty"=>"easy"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:14:in `find'
+  [1m[36mQuiz Create (0.8ms)[0m  [1m[32mINSERT INTO "quizzes" ("category", "difficulty", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["category", "Entertainment: Japanese Anime & Manga"], ["difficulty", "easy"], ["created_at", "2020-08-19 02:10:44.167401"], ["updated_at", "2020-08-19 02:10:44.167401"]]
+  ↳ app/controllers/quizzes_controller.rb:14:in `find'
+  [1m[35m (2.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:14:in `find'
+Completed 200 OK in 345ms (Views: 0.9ms | ActiveRecord: 3.0ms | Allocations: 8958)
+
+
+Started POST "/quizzes/find" for ::1 at 2020-08-18 22:14:41 -0400
+Processing by QuizzesController#find as JSON
+  Parameters: {"category"=>"Entertainment: Japanese Anime & Manga", "difficulty"=>"easy", "quiz"=>{"category"=>"Entertainment: Japanese Anime & Manga", "difficulty"=>"easy"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:14:in `find'
+  [1m[36mQuiz Create (0.6ms)[0m  [1m[32mINSERT INTO "quizzes" ("category", "difficulty", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["category", "Entertainment: Japanese Anime & Manga"], ["difficulty", "easy"], ["created_at", "2020-08-19 02:14:41.130219"], ["updated_at", "2020-08-19 02:14:41.130219"]]
+  ↳ app/controllers/quizzes_controller.rb:14:in `find'
+  [1m[35m (1.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:14:in `find'
+Completed 200 OK in 329ms (Views: 1.1ms | ActiveRecord: 1.8ms | Allocations: 8985)
+
+
+Started POST "/quizzes/find" for ::1 at 2020-08-18 22:16:00 -0400
+Processing by QuizzesController#find as JSON
+  Parameters: {"category"=>"Entertainment: Japanese Anime & Manga", "difficulty"=>"easy", "quiz"=>{"category"=>"Entertainment: Japanese Anime & Manga", "difficulty"=>"easy"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:14:in `find'
+  [1m[36mQuiz Create (0.6ms)[0m  [1m[32mINSERT INTO "quizzes" ("category", "difficulty", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["category", "Entertainment: Japanese Anime & Manga"], ["difficulty", "easy"], ["created_at", "2020-08-19 02:16:00.455936"], ["updated_at", "2020-08-19 02:16:00.455936"]]
+  ↳ app/controllers/quizzes_controller.rb:14:in `find'
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:14:in `find'
+Completed 200 OK in 298ms (Views: 1.0ms | ActiveRecord: 2.0ms | Allocations: 8744)
+
+
+Started POST "/quizzes/find" for ::1 at 2020-08-18 22:25:19 -0400
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by QuizzesController#find as JSON
+  Parameters: {"category"=>"Entertainment: Japanese Anime & Manga", "difficulty"=>"easy", "quiz"=>{"category"=>"Entertainment: Japanese Anime & Manga", "difficulty"=>"easy"}}
+  [1m[35m (1.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:14:in `find'
+  [1m[36mQuiz Create (1.7ms)[0m  [1m[32mINSERT INTO "quizzes" ("category", "difficulty", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["category", "Entertainment: Japanese Anime & Manga"], ["difficulty", "easy"], ["created_at", "2020-08-19 02:25:19.982379"], ["updated_at", "2020-08-19 02:25:19.982379"]]
+  ↳ app/controllers/quizzes_controller.rb:14:in `find'
+  [1m[35m (1.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:14:in `find'
+Completed 200 OK in 429ms (Views: 1.7ms | ActiveRecord: 3.9ms | Allocations: 8948)
+
+
+Started POST "/quizzes/find" for ::1 at 2020-08-18 22:31:21 -0400
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by QuizzesController#find as JSON
+  Parameters: {"category"=>"Entertainment: Japanese Anime & Manga", "difficulty"=>"easy", "quiz"=>{"category"=>"Entertainment: Japanese Anime & Manga", "difficulty"=>"easy"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:14:in `find'
+  [1m[36mQuiz Create (2.0ms)[0m  [1m[32mINSERT INTO "quizzes" ("category", "difficulty", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["category", "Entertainment: Japanese Anime & Manga"], ["difficulty", "easy"], ["created_at", "2020-08-19 02:31:21.212796"], ["updated_at", "2020-08-19 02:31:21.212796"]]
+  ↳ app/controllers/quizzes_controller.rb:14:in `find'
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:14:in `find'
+Completed 200 OK in 507ms (Views: 1.8ms | ActiveRecord: 2.9ms | Allocations: 8990)
+
+
+Started POST "/quizzes/find" for ::1 at 2020-08-18 22:31:44 -0400
+Processing by QuizzesController#find as JSON
+  Parameters: {"category"=>"Entertainment: Japanese Anime & Manga", "difficulty"=>"easy", "quiz"=>{"category"=>"Entertainment: Japanese Anime & Manga", "difficulty"=>"easy"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:14:in `find'
+  [1m[36mQuiz Create (0.8ms)[0m  [1m[32mINSERT INTO "quizzes" ("category", "difficulty", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["category", "Entertainment: Japanese Anime & Manga"], ["difficulty", "easy"], ["created_at", "2020-08-19 02:31:44.637749"], ["updated_at", "2020-08-19 02:31:44.637749"]]
+  ↳ app/controllers/quizzes_controller.rb:14:in `find'
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:14:in `find'
+Completed 200 OK in 265ms (Views: 1.5ms | ActiveRecord: 1.8ms | Allocations: 8788)
+
+
+Started POST "/quizzes/find" for ::1 at 2020-08-18 22:32:11 -0400
+Processing by QuizzesController#find as JSON
+  Parameters: {"category"=>"Entertainment: Japanese Anime & Manga", "difficulty"=>"easy", "quiz"=>{"category"=>"Entertainment: Japanese Anime & Manga", "difficulty"=>"easy"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:14:in `find'
+  [1m[36mQuiz Create (0.6ms)[0m  [1m[32mINSERT INTO "quizzes" ("category", "difficulty", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["category", "Entertainment: Japanese Anime & Manga"], ["difficulty", "easy"], ["created_at", "2020-08-19 02:32:11.286039"], ["updated_at", "2020-08-19 02:32:11.286039"]]
+  ↳ app/controllers/quizzes_controller.rb:14:in `find'
+  [1m[35m (2.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:14:in `find'
+Completed 200 OK in 1425ms (Views: 1.0ms | ActiveRecord: 2.9ms | Allocations: 8931)
+
+
+Started POST "/quizzes/find" for ::1 at 2020-08-18 22:32:22 -0400
+Processing by QuizzesController#find as JSON
+  Parameters: {"category"=>"Entertainment: Japanese Anime & Manga", "difficulty"=>"easy", "quiz"=>{"category"=>"Entertainment: Japanese Anime & Manga", "difficulty"=>"easy"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:14:in `find'
+  [1m[36mQuiz Create (0.5ms)[0m  [1m[32mINSERT INTO "quizzes" ("category", "difficulty", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["category", "Entertainment: Japanese Anime & Manga"], ["difficulty", "easy"], ["created_at", "2020-08-19 02:32:22.450326"], ["updated_at", "2020-08-19 02:32:22.450326"]]
+  ↳ app/controllers/quizzes_controller.rb:14:in `find'
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:14:in `find'
+Completed 200 OK in 1567ms (Views: 1.0ms | ActiveRecord: 1.4ms | Allocations: 8954)
+
+
+Started POST "/quizzes/find" for ::1 at 2020-08-18 22:32:30 -0400
+Processing by QuizzesController#find as JSON
+  Parameters: {"category"=>"Entertainment: Japanese Anime & Manga", "difficulty"=>"easy", "quiz"=>{"category"=>"Entertainment: Japanese Anime & Manga", "difficulty"=>"easy"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:14:in `find'
+  [1m[36mQuiz Create (0.5ms)[0m  [1m[32mINSERT INTO "quizzes" ("category", "difficulty", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["category", "Entertainment: Japanese Anime & Manga"], ["difficulty", "easy"], ["created_at", "2020-08-19 02:32:30.295723"], ["updated_at", "2020-08-19 02:32:30.295723"]]
+  ↳ app/controllers/quizzes_controller.rb:14:in `find'
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:14:in `find'
+Completed 200 OK in 1965ms (Views: 0.8ms | ActiveRecord: 1.6ms | Allocations: 8938)
+
+
+Started POST "/quizzes/find" for ::1 at 2020-08-18 22:32:43 -0400
+Processing by QuizzesController#find as JSON
+  Parameters: {"category"=>"Entertainment: Japanese Anime & Manga", "difficulty"=>"easy", "quiz"=>{"category"=>"Entertainment: Japanese Anime & Manga", "difficulty"=>"easy"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:14:in `find'
+  [1m[36mQuiz Create (0.5ms)[0m  [1m[32mINSERT INTO "quizzes" ("category", "difficulty", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["category", "Entertainment: Japanese Anime & Manga"], ["difficulty", "easy"], ["created_at", "2020-08-19 02:32:43.341471"], ["updated_at", "2020-08-19 02:32:43.341471"]]
+  ↳ app/controllers/quizzes_controller.rb:14:in `find'
+  [1m[35m (2.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:14:in `find'
+Completed 200 OK in 308ms (Views: 2.6ms | ActiveRecord: 3.1ms | Allocations: 8983)
+
+
+Started POST "/quizzes/find" for ::1 at 2020-08-18 22:37:18 -0400
+Processing by QuizzesController#find as JSON
+  Parameters: {"category"=>"Entertainment: Japanese Anime & Manga", "difficulty"=>"easy", "quiz"=>{"category"=>"Entertainment: Japanese Anime & Manga", "difficulty"=>"easy"}}
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:14:in `find'
+  [1m[36mQuiz Create (0.8ms)[0m  [1m[32mINSERT INTO "quizzes" ("category", "difficulty", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["category", "Entertainment: Japanese Anime & Manga"], ["difficulty", "easy"], ["created_at", "2020-08-19 02:37:18.336226"], ["updated_at", "2020-08-19 02:37:18.336226"]]
+  ↳ app/controllers/quizzes_controller.rb:14:in `find'
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:14:in `find'
+Completed 200 OK in 2808ms (Views: 1.5ms | ActiveRecord: 2.0ms | Allocations: 9007)
+
+
+Started POST "/quizzes/find" for ::1 at 2020-08-18 22:52:05 -0400
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by QuizzesController#find as JSON
+  Parameters: {"category"=>"Entertainment: Japanese Anime & Manga", "difficulty"=>"easy", "quiz"=>{"category"=>"Entertainment: Japanese Anime & Manga", "difficulty"=>"easy"}}
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:14:in `find'
+  [1m[36mQuiz Create (1.8ms)[0m  [1m[32mINSERT INTO "quizzes" ("category", "difficulty", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["category", "Entertainment: Japanese Anime & Manga"], ["difficulty", "easy"], ["created_at", "2020-08-19 02:52:05.791379"], ["updated_at", "2020-08-19 02:52:05.791379"]]
+  ↳ app/controllers/quizzes_controller.rb:14:in `find'
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:14:in `find'
+Completed 200 OK in 460ms (Views: 39.7ms | ActiveRecord: 2.9ms | Allocations: 8952)
+
+
+Started POST "/quizzes/find" for ::1 at 2020-08-18 22:52:10 -0400
+Processing by QuizzesController#find as JSON
+  Parameters: {"category"=>"Entertainment: Japanese Anime & Manga", "difficulty"=>"easy", "quiz"=>{"category"=>"Entertainment: Japanese Anime & Manga", "difficulty"=>"easy"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:14:in `find'
+  [1m[36mQuiz Create (0.5ms)[0m  [1m[32mINSERT INTO "quizzes" ("category", "difficulty", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["category", "Entertainment: Japanese Anime & Manga"], ["difficulty", "easy"], ["created_at", "2020-08-19 02:52:10.757259"], ["updated_at", "2020-08-19 02:52:10.757259"]]
+  ↳ app/controllers/quizzes_controller.rb:14:in `find'
+  [1m[35m (1.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:14:in `find'
+Completed 200 OK in 293ms (Views: 4.4ms | ActiveRecord: 1.9ms | Allocations: 8945)
+
+
+Started POST "/quizzes/find" for ::1 at 2020-08-18 22:56:25 -0400
+Processing by QuizzesController#find as JSON
+  Parameters: {"category"=>"Entertainment: Japanese Anime & Manga", "difficulty"=>"easy", "quiz"=>{"category"=>"Entertainment: Japanese Anime & Manga", "difficulty"=>"easy"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:14:in `find'
+  [1m[36mQuiz Create (0.6ms)[0m  [1m[32mINSERT INTO "quizzes" ("category", "difficulty", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["category", "Entertainment: Japanese Anime & Manga"], ["difficulty", "easy"], ["created_at", "2020-08-19 02:56:25.720086"], ["updated_at", "2020-08-19 02:56:25.720086"]]
+  ↳ app/controllers/quizzes_controller.rb:14:in `find'
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:14:in `find'
+Completed 200 OK in 409ms (Views: 3.8ms | ActiveRecord: 1.7ms | Allocations: 8955)
+
+
+Started POST "/quizzes/find" for ::1 at 2020-08-18 22:56:33 -0400
+Processing by QuizzesController#find as JSON
+  Parameters: {"category"=>"Entertainment: Japanese Anime & Manga", "difficulty"=>"easy", "quiz"=>{"category"=>"Entertainment: Japanese Anime & Manga", "difficulty"=>"easy"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:14:in `find'
+  [1m[36mQuiz Create (0.6ms)[0m  [1m[32mINSERT INTO "quizzes" ("category", "difficulty", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["category", "Entertainment: Japanese Anime & Manga"], ["difficulty", "easy"], ["created_at", "2020-08-19 02:56:33.775667"], ["updated_at", "2020-08-19 02:56:33.775667"]]
+  ↳ app/controllers/quizzes_controller.rb:14:in `find'
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:14:in `find'
+Completed 200 OK in 365ms (Views: 1.0ms | ActiveRecord: 2.0ms | Allocations: 8964)
+
+
+Started POST "/quizzes/find" for ::1 at 2020-08-18 22:56:43 -0400
+Processing by QuizzesController#find as JSON
+  Parameters: {"category"=>"Entertainment: Japanese Anime & Manga", "difficulty"=>"easy", "quiz"=>{"category"=>"Entertainment: Japanese Anime & Manga", "difficulty"=>"easy"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:14:in `find'
+  [1m[36mQuiz Create (1.2ms)[0m  [1m[32mINSERT INTO "quizzes" ("category", "difficulty", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["category", "Entertainment: Japanese Anime & Manga"], ["difficulty", "easy"], ["created_at", "2020-08-19 02:56:43.626546"], ["updated_at", "2020-08-19 02:56:43.626546"]]
+  ↳ app/controllers/quizzes_controller.rb:14:in `find'
+  [1m[35m (2.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:14:in `find'
+Completed 200 OK in 290ms (Views: 0.9ms | ActiveRecord: 3.3ms | Allocations: 8974)
+
+
+Started POST "/quizzes/find" for ::1 at 2020-08-18 22:57:20 -0400
+Processing by QuizzesController#find as JSON
+  Parameters: {"category"=>"Entertainment: Japanese Anime & Manga", "difficulty"=>"easy", "quiz"=>{"category"=>"Entertainment: Japanese Anime & Manga", "difficulty"=>"easy"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:14:in `find'
+  [1m[36mQuiz Create (0.7ms)[0m  [1m[32mINSERT INTO "quizzes" ("category", "difficulty", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["category", "Entertainment: Japanese Anime & Manga"], ["difficulty", "easy"], ["created_at", "2020-08-19 02:57:20.758122"], ["updated_at", "2020-08-19 02:57:20.758122"]]
+  ↳ app/controllers/quizzes_controller.rb:14:in `find'
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:14:in `find'
+Completed 200 OK in 237ms (Views: 1.1ms | ActiveRecord: 1.9ms | Allocations: 8751)
+
+
