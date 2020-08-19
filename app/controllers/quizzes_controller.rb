@@ -3,6 +3,7 @@ require 'pp'
 require 'json'
 
 class QuizzesController < ApplicationController
+    # skip_before_action :authorize
     
     def new
         response = HTTParty.get("https://opentdb.com/api_category.php")
