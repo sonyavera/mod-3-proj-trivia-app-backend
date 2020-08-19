@@ -5749,3 +5749,224 @@ Processing by QuizzesController#new as */*
 Completed 200 OK in 164ms (Views: 0.8ms | ActiveRecord: 0.0ms | Allocations: 1603)
 
 
+Started GET "/quizzes/new" for ::1 at 2020-08-19 16:36:27 -0400
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by QuizzesController#new as */*
+Completed 200 OK in 274ms (Views: 1.9ms | ActiveRecord: 0.0ms | Allocations: 1604)
+
+
+Started POST "/quizzes/find" for ::1 at 2020-08-19 16:36:31 -0400
+Processing by QuizzesController#find as JSON
+  Parameters: {"category"=>"Entertainment: Music", "difficulty"=>"hard", "quiz"=>{"category"=>"Entertainment: Music", "difficulty"=>"hard"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[36mQuiz Create (3.9ms)[0m  [1m[32mINSERT INTO "quizzes" ("category", "difficulty", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["category", "Entertainment: Music"], ["difficulty", "hard"], ["created_at", "2020-08-19 20:36:31.495575"], ["updated_at", "2020-08-19 20:36:31.495575"]]
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[35m (5.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+Completed 200 OK in 327ms (Views: 1.3ms | ActiveRecord: 9.4ms | Allocations: 9375)
+
+
+Started POST "/quizzes/find" for ::1 at 2020-08-19 16:39:28 -0400
+Processing by QuizzesController#find as JSON
+  Parameters: {"category"=>"Entertainment: Music", "difficulty"=>"hard", "quiz"=>{"category"=>"Entertainment: Music", "difficulty"=>"hard"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[36mQuiz Create (0.6ms)[0m  [1m[32mINSERT INTO "quizzes" ("category", "difficulty", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["category", "Entertainment: Music"], ["difficulty", "hard"], ["created_at", "2020-08-19 20:39:28.118586"], ["updated_at", "2020-08-19 20:39:28.118586"]]
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+Completed 200 OK in 1122ms (Views: 0.9ms | ActiveRecord: 1.8ms | Allocations: 9502)
+
+
+  [1m[35m (6.8ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddNicknameToQuizResults (20200819204456)
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddNicknameToQuizResults (20200819204456)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE "quiz_results" ADD "nickname" varchar[0m
+  [1m[36mprimary::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20200819204456"]]
+  [1m[35m (3.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.8ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddCategoryAndDifficultyToQuizResults (20200819210115)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE "quiz_results" ADD "category_id" integer[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "quiz_results" ADD "category" varchar[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "quiz_results" ADD "difficulty" varchar[0m
+  [1m[36mprimary::SchemaMigration Create (0.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20200819210115"]]
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started POST "/quizzes/find" for ::1 at 2020-08-19 17:17:17 -0400
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (2.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by QuizzesController#find as JSON
+  Parameters: {"category"=>"Entertainment: Music", "difficulty"=>"hard", "quiz"=>{"category"=>"Entertainment: Music", "difficulty"=>"hard"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[36mQuiz Create (6.3ms)[0m  [1m[32mINSERT INTO "quizzes" ("category", "difficulty", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["category", "Entertainment: Music"], ["difficulty", "hard"], ["created_at", "2020-08-19 21:17:17.858376"], ["updated_at", "2020-08-19 21:17:17.858376"]]
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+Completed 500 Internal Server Error in 773ms (ActiveRecord: 8.4ms | Allocations: 94941)
+
+
+  
+NameError (undefined local variable or method `questions_json' for #<QuizzesController:0x00007ff44ae43680>
+Did you mean?  question_json):
+  
+app/controllers/quizzes_controller.rb:27:in `create_quiz_result'
+app/controllers/quizzes_controller.rb:21:in `find'
+Started GET "/quizzes/new" for ::1 at 2020-08-19 17:17:43 -0400
+Processing by QuizzesController#new as */*
+Completed 200 OK in 139ms (Views: 4.8ms | ActiveRecord: 0.0ms | Allocations: 1612)
+
+
+Started POST "/quizzes/find" for ::1 at 2020-08-19 17:17:46 -0400
+Processing by QuizzesController#find as JSON
+  Parameters: {"category"=>"Entertainment: Music", "difficulty"=>"medium", "quiz"=>{"category"=>"Entertainment: Music", "difficulty"=>"medium"}}
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[36mQuiz Create (0.7ms)[0m  [1m[32mINSERT INTO "quizzes" ("category", "difficulty", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["category", "Entertainment: Music"], ["difficulty", "medium"], ["created_at", "2020-08-19 21:17:46.961314"], ["updated_at", "2020-08-19 21:17:46.961314"]]
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[35m (11.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+Completed 500 Internal Server Error in 570ms (ActiveRecord: 12.3ms | Allocations: 80411)
+
+
+  
+NameError (undefined local variable or method `questions_json' for #<QuizzesController:0x00007ff44b8e7c30>
+Did you mean?  question_json):
+  
+app/controllers/quizzes_controller.rb:27:in `create_quiz_result'
+app/controllers/quizzes_controller.rb:21:in `find'
+Started GET "/quizzes/new" for ::1 at 2020-08-19 17:18:23 -0400
+  [1m[35m (11.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by QuizzesController#new as */*
+Completed 200 OK in 166ms (Views: 1.3ms | ActiveRecord: 0.0ms | Allocations: 1629)
+
+
+Started POST "/quizzes/find" for ::1 at 2020-08-19 17:18:30 -0400
+Processing by QuizzesController#find as JSON
+  Parameters: {"category"=>"General Knowledge", "difficulty"=>"easy", "quiz"=>{"category"=>"General Knowledge", "difficulty"=>"easy"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[36mQuiz Create (0.7ms)[0m  [1m[32mINSERT INTO "quizzes" ("category", "difficulty", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["category", "General Knowledge"], ["difficulty", "easy"], ["created_at", "2020-08-19 21:18:30.673908"], ["updated_at", "2020-08-19 21:18:30.673908"]]
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[35m (1.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+Completed 500 Internal Server Error in 808ms (ActiveRecord: 3.6ms | Allocations: 90835)
+
+
+  
+NameError (undefined local variable or method `questions_json' for #<QuizzesController:0x00007ff44b283858>
+Did you mean?  question_json):
+  
+app/controllers/quizzes_controller.rb:27:in `create_quiz_result'
+app/controllers/quizzes_controller.rb:21:in `find'
+Started POST "/quizzes/find" for ::1 at 2020-08-19 17:18:50 -0400
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by QuizzesController#find as JSON
+  Parameters: {"category"=>"General Knowledge", "difficulty"=>"easy", "quiz"=>{"category"=>"General Knowledge", "difficulty"=>"easy"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[36mQuiz Create (0.6ms)[0m  [1m[32mINSERT INTO "quizzes" ("category", "difficulty", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["category", "General Knowledge"], ["difficulty", "easy"], ["created_at", "2020-08-19 21:18:51.142374"], ["updated_at", "2020-08-19 21:18:51.142374"]]
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[35m (3.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+Completed 500 Internal Server Error in 154641ms (ActiveRecord: 5.8ms | Allocations: 83878)
+
+
+  
+SystemExit (exit):
+  
+(byebug):1:in `exit'
+(byebug):1:in `create_quiz_result'
+app/controllers/quizzes_controller.rb:29:in `create_quiz_result'
+app/controllers/quizzes_controller.rb:21:in `find'
+Started GET "/quizzes/new" for ::1 at 2020-08-19 17:21:26 -0400
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by QuizzesController#new as */*
+Completed 200 OK in 515ms (Views: 14.2ms | ActiveRecord: 0.0ms | Allocations: 253428)
+
+
+Started GET "/quizzes/new" for ::1 at 2020-08-19 17:21:46 -0400
+  [1m[35m (7.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by QuizzesController#new as */*
+Completed 200 OK in 151ms (Views: 1.1ms | ActiveRecord: 0.0ms | Allocations: 1724)
+
+
+Started POST "/quizzes/find" for ::1 at 2020-08-19 17:21:50 -0400
+Processing by QuizzesController#find as JSON
+  Parameters: {"category"=>"General Knowledge", "difficulty"=>"medium", "quiz"=>{"category"=>"General Knowledge", "difficulty"=>"medium"}}
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[36mQuiz Create (0.8ms)[0m  [1m[32mINSERT INTO "quizzes" ("category", "difficulty", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["category", "General Knowledge"], ["difficulty", "medium"], ["created_at", "2020-08-19 21:21:50.997563"], ["updated_at", "2020-08-19 21:21:50.997563"]]
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+Completed 200 OK in 463ms (Views: 0.6ms | ActiveRecord: 4.5ms | Allocations: 24181)
+
+
+Started GET "/quizzes/new" for ::1 at 2020-08-19 17:28:40 -0400
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by QuizzesController#new as */*
+Completed 200 OK in 203ms (Views: 5.1ms | ActiveRecord: 0.0ms | Allocations: 1630)
+
+
+Started POST "/quizzes/find" for ::1 at 2020-08-19 17:28:43 -0400
+Processing by QuizzesController#find as JSON
+  Parameters: {"category"=>"General Knowledge", "difficulty"=>"easy", "quiz"=>{"category"=>"General Knowledge", "difficulty"=>"easy"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[36mQuiz Create (0.9ms)[0m  [1m[32mINSERT INTO "quizzes" ("category", "difficulty", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["category", "General Knowledge"], ["difficulty", "easy"], ["created_at", "2020-08-19 21:28:43.439106"], ["updated_at", "2020-08-19 21:28:43.439106"]]
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[35m (2.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+Completed 200 OK in 2042ms (Views: 0.6ms | ActiveRecord: 3.2ms | Allocations: 20917)
+
+
+Started POST "/quizzes/find" for ::1 at 2020-08-19 17:30:59 -0400
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by QuizzesController#find as JSON
+  Parameters: {"category"=>"General Knowledge", "difficulty"=>"easy", "quiz"=>{"category"=>"General Knowledge", "difficulty"=>"easy"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[36mQuiz Create (0.6ms)[0m  [1m[32mINSERT INTO "quizzes" ("category", "difficulty", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["category", "General Knowledge"], ["difficulty", "easy"], ["created_at", "2020-08-19 21:30:59.258756"], ["updated_at", "2020-08-19 21:30:59.258756"]]
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[35m (1.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+Completed 500 Internal Server Error in 39277ms (ActiveRecord: 5.1ms | Allocations: 328531)
+
+
+  
+SystemExit (exit):
+  
+(byebug):1:in `exit'
+(byebug):1:in `create_quiz_result'
+app/controllers/quizzes_controller.rb:28:in `create_quiz_result'
+app/controllers/quizzes_controller.rb:21:in `find'
+Started GET "/quizzes/new" for ::1 at 2020-08-19 17:31:49 -0400
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by QuizzesController#new as */*
+Completed 200 OK in 193ms (Views: 18.0ms | ActiveRecord: 0.0ms | Allocations: 282998)
+
+
+Started POST "/quizzes/find" for ::1 at 2020-08-19 17:31:54 -0400
+Processing by QuizzesController#find as JSON
+  Parameters: {"category"=>"Entertainment: Books", "difficulty"=>"easy", "quiz"=>{"category"=>"Entertainment: Books", "difficulty"=>"easy"}}
+Completed 500 Internal Server Error in 1379ms (ActiveRecord: 14.0ms | Allocations: 7641829)
+
+
+  
+NameError (undefined local variable or method `quiz' for #<QuizzesController:0x00007fe6f9592670>):
+  
+app/controllers/quizzes_controller.rb:15:in `find'

@@ -4,7 +4,6 @@ require 'json'
 
 class QuizzesController < ApplicationController
 
-    
     def new
         response = HTTParty.get("https://opentdb.com/api_category.php")
         category_list = JSON.parse(response.body)
@@ -17,8 +16,15 @@ class QuizzesController < ApplicationController
         cat_id = quiz.category_id.to_s
         dif = quiz.difficulty
         response = HTTParty.get("https://opentdb.com/api.php?amount=10&category=#{cat_id}&difficulty=#{dif}&type=multiple")        
-        questions_json = JSON.parse(response.body)["results"]   
-        render json: questions_json
+        questions_json = JSON.parse(response.body)["results"] 
+        create_quiz_result(quiz_params, cat_id, questions_json)  
+    end
+
+    def create_quiz_result(quiz_params, cat_id, questions_json)
+        quiz_result = QuizResult.create(quiz_params)
+        quiz_result.category_id = cat_id.to_i
+        quiz_res_id = {quiz_result.id => questions_json}
+        render json: quiz_res_id
     end
 
     

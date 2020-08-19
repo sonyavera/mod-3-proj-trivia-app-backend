@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get 'quizzes/new', to: 'quizzes#new', as: 'new_quiz'
+  post 'quizresults/update', to: "quiz_results#update"
   post 'quizzes/find', to: 'quizzes#find'
   post 'users/create', to: 'users#create'
   get '/signup' => 'users#signup', as: 'signup'

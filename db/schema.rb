@@ -10,13 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_19_182216) do
+ActiveRecord::Schema.define(version: 2020_08_19_210115) do
 
   create_table "quiz_results", force: :cascade do |t|
     t.integer "quiz_id", null: false
     t.integer "score"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "nickname"
+    t.integer "category_id"
+    t.string "category"
+    t.string "difficulty"
     t.index ["quiz_id"], name: "index_quiz_results_on_quiz_id"
   end
 
