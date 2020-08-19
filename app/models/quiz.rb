@@ -6,14 +6,14 @@ class Quiz < ActiveRecord::Base
      has_many :quiz_results
      has_many :users, through: :quiz_results
 
-     def initialize(quiz_params){
-         quiz = Quiz.find_or_create_by(quiz_params)
-         if !quiz.id 
-            self.category_id = Quiz.get_category_id(quiz.category)
-         end
-         quiz_result = QuizResult.find_or_create_by()
-         self.category = quiz_params[category]
-     }
+    #  def initialize(quiz_params){
+    #      quiz = Quiz.find_or_create_by(quiz_params)
+    #      if !quiz.id 
+    #         self.category_id = Quiz.get_category_id(quiz.category)
+    #      end
+    #      quiz_result = QuizResult.find_or_create_by()
+    #      self.category = quiz_params[category]
+    #  }
 
     def self.generate_quiz(category, difficulty)
         category_id = get_category_id(category)
