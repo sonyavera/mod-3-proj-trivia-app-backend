@@ -3,7 +3,7 @@ require 'pp'
 require 'json'
 
 class QuizzesController < ApplicationController
-    # skip_before_action :authorize
+
     
     def new
         response = HTTParty.get("https://opentdb.com/api_category.php")
@@ -19,7 +19,6 @@ class QuizzesController < ApplicationController
         response = HTTParty.get("https://opentdb.com/api.php?amount=10&category=#{cat_id}&difficulty=#{dif}&type=multiple")        
         questions_json = JSON.parse(response.body)["results"]   
         render json: questions_json
-        #we need to write a custom setter that updates the quiz-result joiner table as well
     end
 
     

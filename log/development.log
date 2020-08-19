@@ -4967,3 +4967,785 @@ Filter chain halted as :authorize rendered or redirected
 Completed 401 Unauthorized in 4ms (Views: 0.2ms | ActiveRecord: 0.2ms | Allocations: 772)
 
 
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to RemoveUsers (20200819181817)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE "users"[0m
+  [1m[36mprimary::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20200819181817"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (4.5ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to RemoveUserIdFromQuizResults (20200819182216)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aquiz_results" ("id" integer NOT NULL PRIMARY KEY, "user_id" integer NOT NULL, "quiz_id" integer NOT NULL, "score" integer DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE  INDEX "tindex_aquiz_results_on_quiz_id" ON "aquiz_results" ("quiz_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "tindex_aquiz_results_on_user_id" ON "aquiz_results" ("user_id")[0m
+  [1m[35m (0.3ms)[0m  [1m[32mINSERT INTO "aquiz_results" ("id","user_id","quiz_id","score","created_at","updated_at")
+                     SELECT "id","user_id","quiz_id","score","created_at","updated_at" FROM "quiz_results"[0m
+  [1m[35m (2.3ms)[0m  [1m[35mDROP TABLE "quiz_results"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "quiz_results" ("id" integer NOT NULL PRIMARY KEY, "quiz_id" integer NOT NULL, "score" integer DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_1ca80cf09c"
+FOREIGN KEY ("quiz_id")
+  REFERENCES "quizzes" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_quiz_results_on_quiz_id" ON "quiz_results" ("quiz_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "quiz_results" ("id","quiz_id","score","created_at","updated_at")
+                     SELECT "id","quiz_id","score","created_at","updated_at" FROM "aquiz_results"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "aquiz_results"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mprimary::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20200819182216"]]
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started POST "/quizzes/find" for ::1 at 2020-08-19 14:27:20 -0400
+  [1m[35m (3.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by QuizzesController#find as JSON
+  Parameters: {"category"=>"General Knowledge", "difficulty"=>"easy", "quiz"=>{"category"=>"General Knowledge", "difficulty"=>"easy"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[36mQuiz Create (0.6ms)[0m  [1m[32mINSERT INTO "quizzes" ("category", "difficulty", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["category", "General Knowledge"], ["difficulty", "easy"], ["created_at", "2020-08-19 18:27:20.244937"], ["updated_at", "2020-08-19 18:27:20.244937"]]
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+Completed 200 OK in 516ms (Views: 2.9ms | ActiveRecord: 2.6ms | Allocations: 13840)
+
+
+Started GET "/quizzes/new" for ::1 at 2020-08-19 14:27:24 -0400
+Processing by QuizzesController#new as */*
+Completed 200 OK in 131ms (Views: 2.2ms | ActiveRecord: 0.0ms | Allocations: 1607)
+
+
+Started POST "/quizzes/find" for ::1 at 2020-08-19 14:27:30 -0400
+Processing by QuizzesController#find as JSON
+  Parameters: {"category"=>"Entertainment: Film", "difficulty"=>"medium", "quiz"=>{"category"=>"Entertainment: Film", "difficulty"=>"medium"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[36mQuiz Create (0.8ms)[0m  [1m[32mINSERT INTO "quizzes" ("category", "difficulty", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["category", "Entertainment: Film"], ["difficulty", "medium"], ["created_at", "2020-08-19 18:27:30.168856"], ["updated_at", "2020-08-19 18:27:30.168856"]]
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[35m (1.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+Completed 200 OK in 923ms (Views: 0.6ms | ActiveRecord: 2.1ms | Allocations: 9542)
+
+
+Started GET "/quizzes/new" for ::1 at 2020-08-19 14:38:36 -0400
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by QuizzesController#new as */*
+Completed 200 OK in 456ms (Views: 3.3ms | ActiveRecord: 0.0ms | Allocations: 1606)
+
+
+Started POST "/quizzes/find" for ::1 at 2020-08-19 14:38:39 -0400
+Processing by QuizzesController#find as JSON
+  Parameters: {"category"=>"Entertainment: Music", "difficulty"=>"medium", "quiz"=>{"category"=>"Entertainment: Music", "difficulty"=>"medium"}}
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[36mQuiz Create (2.4ms)[0m  [1m[32mINSERT INTO "quizzes" ("category", "difficulty", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["category", "Entertainment: Music"], ["difficulty", "medium"], ["created_at", "2020-08-19 18:38:39.823208"], ["updated_at", "2020-08-19 18:38:39.823208"]]
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+Completed 200 OK in 1132ms (Views: 4.3ms | ActiveRecord: 3.7ms | Allocations: 9511)
+
+
+Started POST "/quizzes/find" for ::1 at 2020-08-19 14:38:55 -0400
+Processing by QuizzesController#find as JSON
+  Parameters: {"category"=>"Entertainment: Music", "difficulty"=>"medium", "quiz"=>{"category"=>"Entertainment: Music", "difficulty"=>"medium"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[36mQuiz Create (0.7ms)[0m  [1m[32mINSERT INTO "quizzes" ("category", "difficulty", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["category", "Entertainment: Music"], ["difficulty", "medium"], ["created_at", "2020-08-19 18:38:55.801728"], ["updated_at", "2020-08-19 18:38:55.801728"]]
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[35m (1.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+Completed 200 OK in 1573ms (Views: 8.0ms | ActiveRecord: 2.3ms | Allocations: 9522)
+
+
+Started POST "/quizzes/find" for ::1 at 2020-08-19 14:39:04 -0400
+Processing by QuizzesController#find as JSON
+  Parameters: {"category"=>"Entertainment: Music", "difficulty"=>"medium", "quiz"=>{"category"=>"Entertainment: Music", "difficulty"=>"medium"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[36mQuiz Create (0.7ms)[0m  [1m[32mINSERT INTO "quizzes" ("category", "difficulty", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["category", "Entertainment: Music"], ["difficulty", "medium"], ["created_at", "2020-08-19 18:39:04.638377"], ["updated_at", "2020-08-19 18:39:04.638377"]]
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[35m (1.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+Completed 200 OK in 409ms (Views: 6.4ms | ActiveRecord: 2.0ms | Allocations: 9512)
+
+
+Started POST "/quizzes/find" for ::1 at 2020-08-19 14:39:25 -0400
+Processing by QuizzesController#find as JSON
+  Parameters: {"category"=>"Entertainment: Music", "difficulty"=>"medium", "quiz"=>{"category"=>"Entertainment: Music", "difficulty"=>"medium"}}
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[36mQuiz Create (1.0ms)[0m  [1m[32mINSERT INTO "quizzes" ("category", "difficulty", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["category", "Entertainment: Music"], ["difficulty", "medium"], ["created_at", "2020-08-19 18:39:25.587659"], ["updated_at", "2020-08-19 18:39:25.587659"]]
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[35m (6.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+Completed 200 OK in 313ms (Views: 1.5ms | ActiveRecord: 7.5ms | Allocations: 9521)
+
+
+Started POST "/quizzes/find" for ::1 at 2020-08-19 14:41:01 -0400
+Processing by QuizzesController#find as JSON
+  Parameters: {"category"=>"Entertainment: Music", "difficulty"=>"medium", "quiz"=>{"category"=>"Entertainment: Music", "difficulty"=>"medium"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[36mQuiz Create (1.0ms)[0m  [1m[32mINSERT INTO "quizzes" ("category", "difficulty", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["category", "Entertainment: Music"], ["difficulty", "medium"], ["created_at", "2020-08-19 18:41:01.232971"], ["updated_at", "2020-08-19 18:41:01.232971"]]
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[35m (1.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+Completed 200 OK in 1156ms (Views: 1.0ms | ActiveRecord: 2.6ms | Allocations: 9553)
+
+
+Started POST "/quizzes/find" for ::1 at 2020-08-19 14:41:17 -0400
+Processing by QuizzesController#find as JSON
+  Parameters: {"category"=>"Entertainment: Music", "difficulty"=>"medium", "quiz"=>{"category"=>"Entertainment: Music", "difficulty"=>"medium"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[36mQuiz Create (0.7ms)[0m  [1m[32mINSERT INTO "quizzes" ("category", "difficulty", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["category", "Entertainment: Music"], ["difficulty", "medium"], ["created_at", "2020-08-19 18:41:17.996110"], ["updated_at", "2020-08-19 18:41:17.996110"]]
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+Completed 200 OK in 361ms (Views: 2.0ms | ActiveRecord: 1.8ms | Allocations: 9549)
+
+
+Started POST "/quizzes/find" for ::1 at 2020-08-19 14:44:47 -0400
+Processing by QuizzesController#find as JSON
+  Parameters: {"category"=>"Entertainment: Music", "difficulty"=>"medium", "quiz"=>{"category"=>"Entertainment: Music", "difficulty"=>"medium"}}
+  [1m[35m (8.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[36mQuiz Create (4.9ms)[0m  [1m[32mINSERT INTO "quizzes" ("category", "difficulty", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["category", "Entertainment: Music"], ["difficulty", "medium"], ["created_at", "2020-08-19 18:44:47.439645"], ["updated_at", "2020-08-19 18:44:47.439645"]]
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[35m (1.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+Completed 200 OK in 481ms (Views: 3.7ms | ActiveRecord: 15.1ms | Allocations: 9523)
+
+
+Started POST "/quizzes/find" for ::1 at 2020-08-19 14:46:01 -0400
+Processing by QuizzesController#find as JSON
+  Parameters: {"category"=>"Entertainment: Music", "difficulty"=>"medium", "quiz"=>{"category"=>"Entertainment: Music", "difficulty"=>"medium"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[36mQuiz Create (0.9ms)[0m  [1m[32mINSERT INTO "quizzes" ("category", "difficulty", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["category", "Entertainment: Music"], ["difficulty", "medium"], ["created_at", "2020-08-19 18:46:01.061549"], ["updated_at", "2020-08-19 18:46:01.061549"]]
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[35m (2.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+Completed 200 OK in 457ms (Views: 1.1ms | ActiveRecord: 2.9ms | Allocations: 9528)
+
+
+Started POST "/quizzes/find" for ::1 at 2020-08-19 14:46:23 -0400
+Processing by QuizzesController#find as JSON
+  Parameters: {"category"=>"Entertainment: Music", "difficulty"=>"medium", "quiz"=>{"category"=>"Entertainment: Music", "difficulty"=>"medium"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[36mQuiz Create (0.6ms)[0m  [1m[32mINSERT INTO "quizzes" ("category", "difficulty", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["category", "Entertainment: Music"], ["difficulty", "medium"], ["created_at", "2020-08-19 18:46:23.030884"], ["updated_at", "2020-08-19 18:46:23.030884"]]
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+Completed 200 OK in 313ms (Views: 0.9ms | ActiveRecord: 1.6ms | Allocations: 9338)
+
+
+Started POST "/quizzes/find" for ::1 at 2020-08-19 14:46:39 -0400
+Processing by QuizzesController#find as JSON
+  Parameters: {"category"=>"Entertainment: Music", "difficulty"=>"medium", "quiz"=>{"category"=>"Entertainment: Music", "difficulty"=>"medium"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[36mQuiz Create (0.6ms)[0m  [1m[32mINSERT INTO "quizzes" ("category", "difficulty", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["category", "Entertainment: Music"], ["difficulty", "medium"], ["created_at", "2020-08-19 18:46:39.871863"], ["updated_at", "2020-08-19 18:46:39.871863"]]
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[35m (11.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+Completed 200 OK in 287ms (Views: 1.5ms | ActiveRecord: 12.4ms | Allocations: 9349)
+
+
+Started POST "/quizzes/find" for ::1 at 2020-08-19 14:49:12 -0400
+Processing by QuizzesController#find as JSON
+  Parameters: {"category"=>"Entertainment: Music", "difficulty"=>"medium", "quiz"=>{"category"=>"Entertainment: Music", "difficulty"=>"medium"}}
+  [1m[35m (0.7ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[36mQuiz Create (1.2ms)[0m  [1m[32mINSERT INTO "quizzes" ("category", "difficulty", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["category", "Entertainment: Music"], ["difficulty", "medium"], ["created_at", "2020-08-19 18:49:12.492769"], ["updated_at", "2020-08-19 18:49:12.492769"]]
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[35m (1.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+Completed 200 OK in 501ms (Views: 3.3ms | ActiveRecord: 3.0ms | Allocations: 9515)
+
+
+Started POST "/quizzes/find" for ::1 at 2020-08-19 14:50:56 -0400
+Processing by QuizzesController#find as JSON
+  Parameters: {"category"=>"Entertainment: Music", "difficulty"=>"medium", "quiz"=>{"category"=>"Entertainment: Music", "difficulty"=>"medium"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[36mQuiz Create (1.7ms)[0m  [1m[32mINSERT INTO "quizzes" ("category", "difficulty", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["category", "Entertainment: Music"], ["difficulty", "medium"], ["created_at", "2020-08-19 18:50:56.448074"], ["updated_at", "2020-08-19 18:50:56.448074"]]
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+Completed 200 OK in 320ms (Views: 3.3ms | ActiveRecord: 2.8ms | Allocations: 9310)
+
+
+Started POST "/quizzes/find" for ::1 at 2020-08-19 14:53:15 -0400
+Processing by QuizzesController#find as JSON
+  Parameters: {"category"=>"Entertainment: Music", "difficulty"=>"medium", "quiz"=>{"category"=>"Entertainment: Music", "difficulty"=>"medium"}}
+  [1m[35m (0.6ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[36mQuiz Create (2.4ms)[0m  [1m[32mINSERT INTO "quizzes" ("category", "difficulty", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["category", "Entertainment: Music"], ["difficulty", "medium"], ["created_at", "2020-08-19 18:53:15.156124"], ["updated_at", "2020-08-19 18:53:15.156124"]]
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[35m (99.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+Completed 200 OK in 524ms (Views: 2.2ms | ActiveRecord: 102.6ms | Allocations: 13630)
+
+
+Started POST "/quizzes/find" for ::1 at 2020-08-19 14:53:16 -0400
+Processing by QuizzesController#find as JSON
+  Parameters: {"category"=>"Entertainment: Music", "difficulty"=>"medium", "quiz"=>{"category"=>"Entertainment: Music", "difficulty"=>"medium"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[36mQuiz Create (0.5ms)[0m  [1m[32mINSERT INTO "quizzes" ("category", "difficulty", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["category", "Entertainment: Music"], ["difficulty", "medium"], ["created_at", "2020-08-19 18:53:16.090494"], ["updated_at", "2020-08-19 18:53:16.090494"]]
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[35m (2.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+Completed 200 OK in 329ms (Views: 1.5ms | ActiveRecord: 2.9ms | Allocations: 9520)
+
+
+Started POST "/quizzes/find" for ::1 at 2020-08-19 14:53:25 -0400
+Processing by QuizzesController#find as JSON
+  Parameters: {"category"=>"Entertainment: Music", "difficulty"=>"medium", "quiz"=>{"category"=>"Entertainment: Music", "difficulty"=>"medium"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[36mQuiz Create (0.5ms)[0m  [1m[32mINSERT INTO "quizzes" ("category", "difficulty", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["category", "Entertainment: Music"], ["difficulty", "medium"], ["created_at", "2020-08-19 18:53:25.297325"], ["updated_at", "2020-08-19 18:53:25.297325"]]
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+Completed 200 OK in 785ms (Views: 1.4ms | ActiveRecord: 1.5ms | Allocations: 9546)
+
+
+Started POST "/quizzes/find" for ::1 at 2020-08-19 14:54:24 -0400
+Processing by QuizzesController#find as JSON
+  Parameters: {"category"=>"Entertainment: Music", "difficulty"=>"medium", "quiz"=>{"category"=>"Entertainment: Music", "difficulty"=>"medium"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[36mQuiz Create (1.7ms)[0m  [1m[32mINSERT INTO "quizzes" ("category", "difficulty", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["category", "Entertainment: Music"], ["difficulty", "medium"], ["created_at", "2020-08-19 18:54:24.516630"], ["updated_at", "2020-08-19 18:54:24.516630"]]
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[35m (1.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+Completed 200 OK in 409ms (Views: 3.4ms | ActiveRecord: 3.2ms | Allocations: 9520)
+
+
+Started POST "/quizzes/find" for ::1 at 2020-08-19 14:54:57 -0400
+Processing by QuizzesController#find as JSON
+  Parameters: {"category"=>"Entertainment: Music", "difficulty"=>"medium", "quiz"=>{"category"=>"Entertainment: Music", "difficulty"=>"medium"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[36mQuiz Create (6.4ms)[0m  [1m[32mINSERT INTO "quizzes" ("category", "difficulty", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["category", "Entertainment: Music"], ["difficulty", "medium"], ["created_at", "2020-08-19 18:54:57.558311"], ["updated_at", "2020-08-19 18:54:57.558311"]]
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+Completed 200 OK in 313ms (Views: 0.7ms | ActiveRecord: 7.4ms | Allocations: 9325)
+
+
+Started POST "/quizzes/find" for ::1 at 2020-08-19 14:55:09 -0400
+Processing by QuizzesController#find as JSON
+  Parameters: {"category"=>"Entertainment: Music", "difficulty"=>"medium", "quiz"=>{"category"=>"Entertainment: Music", "difficulty"=>"medium"}}
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[36mQuiz Create (0.8ms)[0m  [1m[32mINSERT INTO "quizzes" ("category", "difficulty", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["category", "Entertainment: Music"], ["difficulty", "medium"], ["created_at", "2020-08-19 18:55:09.952097"], ["updated_at", "2020-08-19 18:55:09.952097"]]
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[35m (1.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+Completed 200 OK in 498ms (Views: 1.9ms | ActiveRecord: 2.4ms | Allocations: 9502)
+
+
+Started POST "/quizzes/find" for ::1 at 2020-08-19 14:58:09 -0400
+Processing by QuizzesController#find as JSON
+  Parameters: {"category"=>"Entertainment: Music", "difficulty"=>"medium", "quiz"=>{"category"=>"Entertainment: Music", "difficulty"=>"medium"}}
+  [1m[35m (0.6ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[36mQuiz Create (2.8ms)[0m  [1m[32mINSERT INTO "quizzes" ("category", "difficulty", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["category", "Entertainment: Music"], ["difficulty", "medium"], ["created_at", "2020-08-19 18:58:09.269703"], ["updated_at", "2020-08-19 18:58:09.269703"]]
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[35m (1.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+Completed 200 OK in 394ms (Views: 3.3ms | ActiveRecord: 5.0ms | Allocations: 9539)
+
+
+Started POST "/quizzes/find" for ::1 at 2020-08-19 15:00:24 -0400
+Processing by QuizzesController#find as JSON
+  Parameters: {"category"=>"Entertainment: Music", "difficulty"=>"medium", "quiz"=>{"category"=>"Entertainment: Music", "difficulty"=>"medium"}}
+  [1m[35m (2.4ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[36mQuiz Create (5.5ms)[0m  [1m[32mINSERT INTO "quizzes" ("category", "difficulty", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["category", "Entertainment: Music"], ["difficulty", "medium"], ["created_at", "2020-08-19 19:00:24.697335"], ["updated_at", "2020-08-19 19:00:24.697335"]]
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[35m (1.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+Completed 200 OK in 472ms (Views: 2.4ms | ActiveRecord: 9.3ms | Allocations: 9518)
+
+
+Started POST "/quizzes/find" for ::1 at 2020-08-19 15:01:01 -0400
+Processing by QuizzesController#find as JSON
+  Parameters: {"category"=>"Entertainment: Music", "difficulty"=>"medium", "quiz"=>{"category"=>"Entertainment: Music", "difficulty"=>"medium"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[36mQuiz Create (2.5ms)[0m  [1m[32mINSERT INTO "quizzes" ("category", "difficulty", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["category", "Entertainment: Music"], ["difficulty", "medium"], ["created_at", "2020-08-19 19:01:01.151909"], ["updated_at", "2020-08-19 19:01:01.151909"]]
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[35m (1.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+Completed 200 OK in 653ms (Views: 1.6ms | ActiveRecord: 4.0ms | Allocations: 9525)
+
+
+Started POST "/quizzes/find" for ::1 at 2020-08-19 15:03:33 -0400
+Processing by QuizzesController#find as JSON
+  Parameters: {"category"=>"Entertainment: Music", "difficulty"=>"medium", "quiz"=>{"category"=>"Entertainment: Music", "difficulty"=>"medium"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[36mQuiz Create (1.5ms)[0m  [1m[32mINSERT INTO "quizzes" ("category", "difficulty", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["category", "Entertainment: Music"], ["difficulty", "medium"], ["created_at", "2020-08-19 19:03:33.142813"], ["updated_at", "2020-08-19 19:03:33.142813"]]
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+Completed 200 OK in 1493ms (Views: 1.0ms | ActiveRecord: 2.6ms | Allocations: 9521)
+
+
+Started POST "/quizzes/find" for ::1 at 2020-08-19 15:04:05 -0400
+Processing by QuizzesController#find as JSON
+  Parameters: {"category"=>"Entertainment: Music", "difficulty"=>"medium", "quiz"=>{"category"=>"Entertainment: Music", "difficulty"=>"medium"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[36mQuiz Create (0.7ms)[0m  [1m[32mINSERT INTO "quizzes" ("category", "difficulty", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["category", "Entertainment: Music"], ["difficulty", "medium"], ["created_at", "2020-08-19 19:04:05.479687"], ["updated_at", "2020-08-19 19:04:05.479687"]]
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+Completed 200 OK in 604ms (Views: 1.4ms | ActiveRecord: 1.8ms | Allocations: 9524)
+
+
+Started POST "/quizzes/find" for ::1 at 2020-08-19 15:04:14 -0400
+Processing by QuizzesController#find as JSON
+  Parameters: {"category"=>"Entertainment: Music", "difficulty"=>"medium", "quiz"=>{"category"=>"Entertainment: Music", "difficulty"=>"medium"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[36mQuiz Create (0.4ms)[0m  [1m[32mINSERT INTO "quizzes" ("category", "difficulty", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["category", "Entertainment: Music"], ["difficulty", "medium"], ["created_at", "2020-08-19 19:04:14.212085"], ["updated_at", "2020-08-19 19:04:14.212085"]]
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[35m (2.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+Completed 200 OK in 708ms (Views: 0.7ms | ActiveRecord: 3.3ms | Allocations: 9510)
+
+
+Started POST "/quizzes/find" for ::1 at 2020-08-19 15:05:15 -0400
+Processing by QuizzesController#find as JSON
+  Parameters: {"category"=>"Entertainment: Music", "difficulty"=>"medium", "quiz"=>{"category"=>"Entertainment: Music", "difficulty"=>"medium"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[36mQuiz Create (1.2ms)[0m  [1m[32mINSERT INTO "quizzes" ("category", "difficulty", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["category", "Entertainment: Music"], ["difficulty", "medium"], ["created_at", "2020-08-19 19:05:15.573473"], ["updated_at", "2020-08-19 19:05:15.573473"]]
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+Completed 200 OK in 581ms (Views: 1.3ms | ActiveRecord: 2.0ms | Allocations: 9516)
+
+
+Started POST "/quizzes/find" for ::1 at 2020-08-19 15:05:43 -0400
+Processing by QuizzesController#find as JSON
+  Parameters: {"category"=>"Entertainment: Music", "difficulty"=>"medium", "quiz"=>{"category"=>"Entertainment: Music", "difficulty"=>"medium"}}
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[36mQuiz Create (0.8ms)[0m  [1m[32mINSERT INTO "quizzes" ("category", "difficulty", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["category", "Entertainment: Music"], ["difficulty", "medium"], ["created_at", "2020-08-19 19:05:43.016376"], ["updated_at", "2020-08-19 19:05:43.016376"]]
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+Completed 200 OK in 1221ms (Views: 1.4ms | ActiveRecord: 2.0ms | Allocations: 9532)
+
+
+Started POST "/quizzes/find" for ::1 at 2020-08-19 15:06:20 -0400
+Processing by QuizzesController#find as JSON
+  Parameters: {"category"=>"Entertainment: Music", "difficulty"=>"medium", "quiz"=>{"category"=>"Entertainment: Music", "difficulty"=>"medium"}}
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[36mQuiz Create (6.7ms)[0m  [1m[32mINSERT INTO "quizzes" ("category", "difficulty", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["category", "Entertainment: Music"], ["difficulty", "medium"], ["created_at", "2020-08-19 19:06:20.405178"], ["updated_at", "2020-08-19 19:06:20.405178"]]
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+Completed 200 OK in 446ms (Views: 1.2ms | ActiveRecord: 8.1ms | Allocations: 9530)
+
+
+Started POST "/quizzes/find" for ::1 at 2020-08-19 15:08:30 -0400
+Processing by QuizzesController#find as JSON
+  Parameters: {"category"=>"Entertainment: Music", "difficulty"=>"medium", "quiz"=>{"category"=>"Entertainment: Music", "difficulty"=>"medium"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[36mQuiz Create (1.2ms)[0m  [1m[32mINSERT INTO "quizzes" ("category", "difficulty", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["category", "Entertainment: Music"], ["difficulty", "medium"], ["created_at", "2020-08-19 19:08:30.757472"], ["updated_at", "2020-08-19 19:08:30.757472"]]
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[35m (6.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+Completed 200 OK in 483ms (Views: 1.1ms | ActiveRecord: 7.4ms | Allocations: 9492)
+
+
+Started POST "/quizzes/find" for ::1 at 2020-08-19 15:15:43 -0400
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by QuizzesController#find as JSON
+  Parameters: {"category"=>"Entertainment: Music", "difficulty"=>"medium", "quiz"=>{"category"=>"Entertainment: Music", "difficulty"=>"medium"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[36mQuiz Create (0.5ms)[0m  [1m[32mINSERT INTO "quizzes" ("category", "difficulty", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["category", "Entertainment: Music"], ["difficulty", "medium"], ["created_at", "2020-08-19 19:15:43.125044"], ["updated_at", "2020-08-19 19:15:43.125044"]]
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[35m (9.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+Completed 200 OK in 365ms (Views: 2.9ms | ActiveRecord: 10.3ms | Allocations: 9498)
+
+
+Started POST "/quizzes/find" for ::1 at 2020-08-19 15:18:07 -0400
+Processing by QuizzesController#find as JSON
+  Parameters: {"category"=>"Entertainment: Music", "difficulty"=>"medium", "quiz"=>{"category"=>"Entertainment: Music", "difficulty"=>"medium"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[36mQuiz Create (0.7ms)[0m  [1m[32mINSERT INTO "quizzes" ("category", "difficulty", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["category", "Entertainment: Music"], ["difficulty", "medium"], ["created_at", "2020-08-19 19:18:07.549785"], ["updated_at", "2020-08-19 19:18:07.549785"]]
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[35m (2.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+Completed 200 OK in 302ms (Views: 0.9ms | ActiveRecord: 3.2ms | Allocations: 9310)
+
+
+Started POST "/quizzes/find" for ::1 at 2020-08-19 15:18:31 -0400
+Processing by QuizzesController#find as JSON
+  Parameters: {"category"=>"Entertainment: Music", "difficulty"=>"medium", "quiz"=>{"category"=>"Entertainment: Music", "difficulty"=>"medium"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[36mQuiz Create (0.4ms)[0m  [1m[32mINSERT INTO "quizzes" ("category", "difficulty", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["category", "Entertainment: Music"], ["difficulty", "medium"], ["created_at", "2020-08-19 19:18:31.071696"], ["updated_at", "2020-08-19 19:18:31.071696"]]
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+Completed 200 OK in 651ms (Views: 1.0ms | ActiveRecord: 1.6ms | Allocations: 9527)
+
+
+Started POST "/quizzes/find" for ::1 at 2020-08-19 15:18:44 -0400
+Processing by QuizzesController#find as JSON
+  Parameters: {"category"=>"Entertainment: Music", "difficulty"=>"medium", "quiz"=>{"category"=>"Entertainment: Music", "difficulty"=>"medium"}}
+  [1m[35m (0.6ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[36mQuiz Create (0.6ms)[0m  [1m[32mINSERT INTO "quizzes" ("category", "difficulty", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["category", "Entertainment: Music"], ["difficulty", "medium"], ["created_at", "2020-08-19 19:18:44.961849"], ["updated_at", "2020-08-19 19:18:44.961849"]]
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[35m (3.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+Completed 200 OK in 313ms (Views: 23.7ms | ActiveRecord: 4.3ms | Allocations: 9501)
+
+
+Started POST "/quizzes/find" for ::1 at 2020-08-19 15:18:56 -0400
+Processing by QuizzesController#find as JSON
+  Parameters: {"category"=>"Entertainment: Music", "difficulty"=>"medium", "quiz"=>{"category"=>"Entertainment: Music", "difficulty"=>"medium"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[36mQuiz Create (4.5ms)[0m  [1m[32mINSERT INTO "quizzes" ("category", "difficulty", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["category", "Entertainment: Music"], ["difficulty", "medium"], ["created_at", "2020-08-19 19:18:56.066412"], ["updated_at", "2020-08-19 19:18:56.066412"]]
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[35m (1.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+Completed 200 OK in 416ms (Views: 1.5ms | ActiveRecord: 6.5ms | Allocations: 9549)
+
+
+Started POST "/quizzes/find" for ::1 at 2020-08-19 15:21:51 -0400
+Processing by QuizzesController#find as JSON
+  Parameters: {"category"=>"Entertainment: Music", "difficulty"=>"medium", "quiz"=>{"category"=>"Entertainment: Music", "difficulty"=>"medium"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[36mQuiz Create (0.8ms)[0m  [1m[32mINSERT INTO "quizzes" ("category", "difficulty", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["category", "Entertainment: Music"], ["difficulty", "medium"], ["created_at", "2020-08-19 19:21:51.925072"], ["updated_at", "2020-08-19 19:21:51.925072"]]
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[35m (1.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+Completed 200 OK in 318ms (Views: 1.1ms | ActiveRecord: 2.3ms | Allocations: 9345)
+
+
+Started POST "/quizzes/find" for ::1 at 2020-08-19 15:23:05 -0400
+Processing by QuizzesController#find as JSON
+  Parameters: {"category"=>"Entertainment: Music", "difficulty"=>"medium", "quiz"=>{"category"=>"Entertainment: Music", "difficulty"=>"medium"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[36mQuiz Create (1.9ms)[0m  [1m[32mINSERT INTO "quizzes" ("category", "difficulty", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["category", "Entertainment: Music"], ["difficulty", "medium"], ["created_at", "2020-08-19 19:23:05.417520"], ["updated_at", "2020-08-19 19:23:05.417520"]]
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+Completed 200 OK in 321ms (Views: 1.1ms | ActiveRecord: 3.1ms | Allocations: 9536)
+
+
+Started POST "/quizzes/find" for ::1 at 2020-08-19 15:39:48 -0400
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by QuizzesController#find as JSON
+  Parameters: {"category"=>"Entertainment: Music", "difficulty"=>"medium", "quiz"=>{"category"=>"Entertainment: Music", "difficulty"=>"medium"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[36mQuiz Create (2.5ms)[0m  [1m[32mINSERT INTO "quizzes" ("category", "difficulty", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["category", "Entertainment: Music"], ["difficulty", "medium"], ["created_at", "2020-08-19 19:39:48.113085"], ["updated_at", "2020-08-19 19:39:48.113085"]]
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+Completed 200 OK in 371ms (Views: 2.3ms | ActiveRecord: 3.6ms | Allocations: 9505)
+
+
+Started POST "/quizzes/find" for ::1 at 2020-08-19 15:41:28 -0400
+Processing by QuizzesController#find as JSON
+  Parameters: {"category"=>"Entertainment: Music", "difficulty"=>"medium", "quiz"=>{"category"=>"Entertainment: Music", "difficulty"=>"medium"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[36mQuiz Create (1.0ms)[0m  [1m[32mINSERT INTO "quizzes" ("category", "difficulty", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["category", "Entertainment: Music"], ["difficulty", "medium"], ["created_at", "2020-08-19 19:41:28.984839"], ["updated_at", "2020-08-19 19:41:28.984839"]]
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+Completed 200 OK in 372ms (Views: 85.0ms | ActiveRecord: 1.9ms | Allocations: 9313)
+
+
+Started POST "/quizzes/find" for ::1 at 2020-08-19 15:44:01 -0400
+Processing by QuizzesController#find as JSON
+  Parameters: {"category"=>"Entertainment: Music", "difficulty"=>"medium", "quiz"=>{"category"=>"Entertainment: Music", "difficulty"=>"medium"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[36mQuiz Create (1.1ms)[0m  [1m[32mINSERT INTO "quizzes" ("category", "difficulty", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["category", "Entertainment: Music"], ["difficulty", "medium"], ["created_at", "2020-08-19 19:44:01.970318"], ["updated_at", "2020-08-19 19:44:01.970318"]]
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[35m (2.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+Completed 200 OK in 507ms (Views: 1.4ms | ActiveRecord: 3.2ms | Allocations: 9526)
+
+
+Started POST "/quizzes/find" for ::1 at 2020-08-19 15:45:07 -0400
+Processing by QuizzesController#find as JSON
+  Parameters: {"category"=>"Entertainment: Music", "difficulty"=>"medium", "quiz"=>{"category"=>"Entertainment: Music", "difficulty"=>"medium"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[36mQuiz Create (0.5ms)[0m  [1m[32mINSERT INTO "quizzes" ("category", "difficulty", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["category", "Entertainment: Music"], ["difficulty", "medium"], ["created_at", "2020-08-19 19:45:07.470484"], ["updated_at", "2020-08-19 19:45:07.470484"]]
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+Completed 200 OK in 329ms (Views: 2.8ms | ActiveRecord: 1.6ms | Allocations: 9512)
+
+
+Started POST "/quizzes/find" for ::1 at 2020-08-19 15:46:34 -0400
+Processing by QuizzesController#find as JSON
+  Parameters: {"category"=>"Entertainment: Music", "difficulty"=>"medium", "quiz"=>{"category"=>"Entertainment: Music", "difficulty"=>"medium"}}
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[36mQuiz Create (0.6ms)[0m  [1m[32mINSERT INTO "quizzes" ("category", "difficulty", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["category", "Entertainment: Music"], ["difficulty", "medium"], ["created_at", "2020-08-19 19:46:34.843813"], ["updated_at", "2020-08-19 19:46:34.843813"]]
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[35m (1.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+Completed 200 OK in 310ms (Views: 1.1ms | ActiveRecord: 2.4ms | Allocations: 9337)
+
+
+Started POST "/quizzes/find" for ::1 at 2020-08-19 15:46:44 -0400
+Processing by QuizzesController#find as JSON
+  Parameters: {"category"=>"Entertainment: Music", "difficulty"=>"medium", "quiz"=>{"category"=>"Entertainment: Music", "difficulty"=>"medium"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[36mQuiz Create (0.6ms)[0m  [1m[32mINSERT INTO "quizzes" ("category", "difficulty", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["category", "Entertainment: Music"], ["difficulty", "medium"], ["created_at", "2020-08-19 19:46:44.479025"], ["updated_at", "2020-08-19 19:46:44.479025"]]
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[35m (2.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+Completed 200 OK in 327ms (Views: 1.3ms | ActiveRecord: 3.0ms | Allocations: 9508)
+
+
+Started POST "/quizzes/find" for ::1 at 2020-08-19 15:47:07 -0400
+Processing by QuizzesController#find as JSON
+  Parameters: {"category"=>"Entertainment: Music", "difficulty"=>"medium", "quiz"=>{"category"=>"Entertainment: Music", "difficulty"=>"medium"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[36mQuiz Create (2.0ms)[0m  [1m[32mINSERT INTO "quizzes" ("category", "difficulty", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["category", "Entertainment: Music"], ["difficulty", "medium"], ["created_at", "2020-08-19 19:47:07.683673"], ["updated_at", "2020-08-19 19:47:07.683673"]]
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[35m (1.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+Completed 200 OK in 271ms (Views: 1.1ms | ActiveRecord: 3.4ms | Allocations: 9349)
+
+
+Started POST "/quizzes/find" for ::1 at 2020-08-19 15:50:11 -0400
+Processing by QuizzesController#find as JSON
+  Parameters: {"category"=>"Entertainment: Music", "difficulty"=>"medium", "quiz"=>{"category"=>"Entertainment: Music", "difficulty"=>"medium"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[36mQuiz Create (7.1ms)[0m  [1m[32mINSERT INTO "quizzes" ("category", "difficulty", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["category", "Entertainment: Music"], ["difficulty", "medium"], ["created_at", "2020-08-19 19:50:11.351587"], ["updated_at", "2020-08-19 19:50:11.351587"]]
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+Completed 200 OK in 295ms (Views: 1.4ms | ActiveRecord: 8.3ms | Allocations: 9529)
+
+
+Started POST "/quizzes/find" for ::1 at 2020-08-19 15:51:16 -0400
+Processing by QuizzesController#find as JSON
+  Parameters: {"category"=>"Entertainment: Music", "difficulty"=>"medium", "quiz"=>{"category"=>"Entertainment: Music", "difficulty"=>"medium"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[36mQuiz Create (15.8ms)[0m  [1m[32mINSERT INTO "quizzes" ("category", "difficulty", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["category", "Entertainment: Music"], ["difficulty", "medium"], ["created_at", "2020-08-19 19:51:16.165327"], ["updated_at", "2020-08-19 19:51:16.165327"]]
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[35m (1.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+Completed 200 OK in 317ms (Views: 1.9ms | ActiveRecord: 17.6ms | Allocations: 9306)
+
+
+Started POST "/quizzes/find" for ::1 at 2020-08-19 15:53:15 -0400
+Processing by QuizzesController#find as JSON
+  Parameters: {"category"=>"Entertainment: Music", "difficulty"=>"medium", "quiz"=>{"category"=>"Entertainment: Music", "difficulty"=>"medium"}}
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[36mQuiz Create (14.8ms)[0m  [1m[32mINSERT INTO "quizzes" ("category", "difficulty", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["category", "Entertainment: Music"], ["difficulty", "medium"], ["created_at", "2020-08-19 19:53:15.412662"], ["updated_at", "2020-08-19 19:53:15.412662"]]
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[35m (2.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+Completed 200 OK in 301ms (Views: 0.9ms | ActiveRecord: 17.3ms | Allocations: 9350)
+
+
+Started POST "/quizzes/find" for ::1 at 2020-08-19 15:54:20 -0400
+Processing by QuizzesController#find as JSON
+  Parameters: {"category"=>"Entertainment: Music", "difficulty"=>"medium", "quiz"=>{"category"=>"Entertainment: Music", "difficulty"=>"medium"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[36mQuiz Create (8.4ms)[0m  [1m[32mINSERT INTO "quizzes" ("category", "difficulty", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["category", "Entertainment: Music"], ["difficulty", "medium"], ["created_at", "2020-08-19 19:54:20.465682"], ["updated_at", "2020-08-19 19:54:20.465682"]]
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[35m (1.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+Completed 200 OK in 304ms (Views: 0.8ms | ActiveRecord: 9.7ms | Allocations: 9511)
+
+
+Started POST "/quizzes/find" for ::1 at 2020-08-19 15:55:34 -0400
+Processing by QuizzesController#find as JSON
+  Parameters: {"category"=>"Entertainment: Music", "difficulty"=>"medium", "quiz"=>{"category"=>"Entertainment: Music", "difficulty"=>"medium"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[36mQuiz Create (0.5ms)[0m  [1m[32mINSERT INTO "quizzes" ("category", "difficulty", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["category", "Entertainment: Music"], ["difficulty", "medium"], ["created_at", "2020-08-19 19:55:34.073662"], ["updated_at", "2020-08-19 19:55:34.073662"]]
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+Completed 200 OK in 331ms (Views: 1.4ms | ActiveRecord: 1.6ms | Allocations: 9367)
+
+
+Started POST "/quizzes/find" for ::1 at 2020-08-19 15:57:00 -0400
+Processing by QuizzesController#find as JSON
+  Parameters: {"category"=>"Entertainment: Music", "difficulty"=>"medium", "quiz"=>{"category"=>"Entertainment: Music", "difficulty"=>"medium"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[36mQuiz Create (0.4ms)[0m  [1m[32mINSERT INTO "quizzes" ("category", "difficulty", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["category", "Entertainment: Music"], ["difficulty", "medium"], ["created_at", "2020-08-19 19:57:00.364958"], ["updated_at", "2020-08-19 19:57:00.364958"]]
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[35m (1.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+Completed 200 OK in 303ms (Views: 0.9ms | ActiveRecord: 1.9ms | Allocations: 9332)
+
+
+Started POST "/quizzes/find" for ::1 at 2020-08-19 15:57:05 -0400
+Processing by QuizzesController#find as JSON
+  Parameters: {"category"=>"Entertainment: Music", "difficulty"=>"medium", "quiz"=>{"category"=>"Entertainment: Music", "difficulty"=>"medium"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[36mQuiz Create (0.4ms)[0m  [1m[32mINSERT INTO "quizzes" ("category", "difficulty", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["category", "Entertainment: Music"], ["difficulty", "medium"], ["created_at", "2020-08-19 19:57:05.719305"], ["updated_at", "2020-08-19 19:57:05.719305"]]
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[35m (2.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+Completed 200 OK in 359ms (Views: 0.8ms | ActiveRecord: 2.8ms | Allocations: 9543)
+
+
+Started POST "/quizzes/find" for ::1 at 2020-08-19 15:58:15 -0400
+Processing by QuizzesController#find as JSON
+  Parameters: {"category"=>"Entertainment: Music", "difficulty"=>"medium", "quiz"=>{"category"=>"Entertainment: Music", "difficulty"=>"medium"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[36mQuiz Create (1.5ms)[0m  [1m[32mINSERT INTO "quizzes" ("category", "difficulty", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["category", "Entertainment: Music"], ["difficulty", "medium"], ["created_at", "2020-08-19 19:58:15.019262"], ["updated_at", "2020-08-19 19:58:15.019262"]]
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+Completed 200 OK in 269ms (Views: 7.6ms | ActiveRecord: 2.6ms | Allocations: 9329)
+
+
+Started POST "/quizzes/find" for ::1 at 2020-08-19 15:58:51 -0400
+Processing by QuizzesController#find as JSON
+  Parameters: {"category"=>"Entertainment: Music", "difficulty"=>"medium", "quiz"=>{"category"=>"Entertainment: Music", "difficulty"=>"medium"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[36mQuiz Create (0.6ms)[0m  [1m[32mINSERT INTO "quizzes" ("category", "difficulty", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["category", "Entertainment: Music"], ["difficulty", "medium"], ["created_at", "2020-08-19 19:58:51.824546"], ["updated_at", "2020-08-19 19:58:51.824546"]]
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+Completed 200 OK in 806ms (Views: 1.5ms | ActiveRecord: 1.6ms | Allocations: 9532)
+
+
+Started POST "/quizzes/find" for ::1 at 2020-08-19 15:59:14 -0400
+Processing by QuizzesController#find as JSON
+  Parameters: {"category"=>"Entertainment: Music", "difficulty"=>"medium", "quiz"=>{"category"=>"Entertainment: Music", "difficulty"=>"medium"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[36mQuiz Create (0.8ms)[0m  [1m[32mINSERT INTO "quizzes" ("category", "difficulty", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["category", "Entertainment: Music"], ["difficulty", "medium"], ["created_at", "2020-08-19 19:59:14.875628"], ["updated_at", "2020-08-19 19:59:14.875628"]]
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[35m (2.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+Completed 200 OK in 293ms (Views: 0.6ms | ActiveRecord: 3.2ms | Allocations: 9334)
+
+
+Started POST "/quizzes/find" for ::1 at 2020-08-19 15:59:22 -0400
+Processing by QuizzesController#find as JSON
+  Parameters: {"category"=>"Entertainment: Music", "difficulty"=>"medium", "quiz"=>{"category"=>"Entertainment: Music", "difficulty"=>"medium"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[36mQuiz Create (4.9ms)[0m  [1m[32mINSERT INTO "quizzes" ("category", "difficulty", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["category", "Entertainment: Music"], ["difficulty", "medium"], ["created_at", "2020-08-19 19:59:22.490768"], ["updated_at", "2020-08-19 19:59:22.490768"]]
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[35m (1.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+Completed 200 OK in 284ms (Views: 0.9ms | ActiveRecord: 6.5ms | Allocations: 9528)
+
+
+Started POST "/quizzes/find" for ::1 at 2020-08-19 16:00:57 -0400
+Processing by QuizzesController#find as JSON
+  Parameters: {"category"=>"Entertainment: Music", "difficulty"=>"medium", "quiz"=>{"category"=>"Entertainment: Music", "difficulty"=>"medium"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[36mQuiz Create (1.1ms)[0m  [1m[32mINSERT INTO "quizzes" ("category", "difficulty", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["category", "Entertainment: Music"], ["difficulty", "medium"], ["created_at", "2020-08-19 20:00:57.296145"], ["updated_at", "2020-08-19 20:00:57.296145"]]
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+Completed 200 OK in 1167ms (Views: 0.8ms | ActiveRecord: 2.2ms | Allocations: 9527)
+
+
+Started POST "/quizzes/find" for ::1 at 2020-08-19 16:02:43 -0400
+Processing by QuizzesController#find as JSON
+  Parameters: {"category"=>"Entertainment: Music", "difficulty"=>"medium", "quiz"=>{"category"=>"Entertainment: Music", "difficulty"=>"medium"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[36mQuiz Create (1.1ms)[0m  [1m[32mINSERT INTO "quizzes" ("category", "difficulty", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["category", "Entertainment: Music"], ["difficulty", "medium"], ["created_at", "2020-08-19 20:02:43.221917"], ["updated_at", "2020-08-19 20:02:43.221917"]]
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+Completed 200 OK in 316ms (Views: 1.1ms | ActiveRecord: 2.3ms | Allocations: 9501)
+
+
+Started POST "/quizzes/find" for ::1 at 2020-08-19 16:05:04 -0400
+Processing by QuizzesController#find as JSON
+  Parameters: {"category"=>"Entertainment: Music", "difficulty"=>"medium", "quiz"=>{"category"=>"Entertainment: Music", "difficulty"=>"medium"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[36mQuiz Create (1.3ms)[0m  [1m[32mINSERT INTO "quizzes" ("category", "difficulty", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["category", "Entertainment: Music"], ["difficulty", "medium"], ["created_at", "2020-08-19 20:05:04.353601"], ["updated_at", "2020-08-19 20:05:04.353601"]]
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+Completed 200 OK in 269ms (Views: 2.1ms | ActiveRecord: 2.4ms | Allocations: 9349)
+
+
+Started POST "/quizzes/find" for ::1 at 2020-08-19 16:06:27 -0400
+Processing by QuizzesController#find as JSON
+  Parameters: {"category"=>"Entertainment: Music", "difficulty"=>"medium", "quiz"=>{"category"=>"Entertainment: Music", "difficulty"=>"medium"}}
+  [1m[35m (0.5ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[36mQuiz Create (1.9ms)[0m  [1m[32mINSERT INTO "quizzes" ("category", "difficulty", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["category", "Entertainment: Music"], ["difficulty", "medium"], ["created_at", "2020-08-19 20:06:27.785630"], ["updated_at", "2020-08-19 20:06:27.785630"]]
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+  [1m[35m (2.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/quizzes_controller.rb:15:in `find'
+Completed 200 OK in 368ms (Views: 2.4ms | ActiveRecord: 5.3ms | Allocations: 9326)
+
+
+Started GET "/quizzes/new" for ::1 at 2020-08-19 16:06:31 -0400
+Processing by QuizzesController#new as */*
+Completed 200 OK in 372ms (Views: 3.2ms | ActiveRecord: 0.0ms | Allocations: 1602)
+
+
+Started GET "/quizzes/new" for ::1 at 2020-08-19 16:08:27 -0400
+Processing by QuizzesController#new as */*
+Completed 200 OK in 138ms (Views: 0.8ms | ActiveRecord: 0.0ms | Allocations: 1602)
+
+
+Started GET "/quizzes/new" for ::1 at 2020-08-19 16:08:47 -0400
+Processing by QuizzesController#new as */*
+Completed 200 OK in 192ms (Views: 0.7ms | ActiveRecord: 0.0ms | Allocations: 1604)
+
+
+Started GET "/quizzes/new" for ::1 at 2020-08-19 16:08:52 -0400
+Processing by QuizzesController#new as */*
+Completed 200 OK in 164ms (Views: 0.8ms | ActiveRecord: 0.0ms | Allocations: 1603)
+
+

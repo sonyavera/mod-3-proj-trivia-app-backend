@@ -10,16 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_17_144618) do
+ActiveRecord::Schema.define(version: 2020_08_19_182216) do
 
   create_table "quiz_results", force: :cascade do |t|
-    t.integer "user_id", null: false
     t.integer "quiz_id", null: false
     t.integer "score"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["quiz_id"], name: "index_quiz_results_on_quiz_id"
-    t.index ["user_id"], name: "index_quiz_results_on_user_id"
   end
 
   create_table "quizzes", force: :cascade do |t|
@@ -30,15 +28,5 @@ ActiveRecord::Schema.define(version: 2020_08_17_144618) do
     t.integer "category_id"
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string "first_name"
-    t.string "last_name"
-    t.string "username"
-    t.string "email"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   add_foreign_key "quiz_results", "quizzes"
-  add_foreign_key "quiz_results", "users"
 end
