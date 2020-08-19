@@ -6,6 +6,7 @@ class UsersController < ApplicationController
         if user.valid? 
             user.save
             session[:user_id] = user.id
+            
             success_message = {
                 "valid" => "y",
                 "message" => "Thanks for joining!"
